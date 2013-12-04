@@ -1,0 +1,20 @@
+stig-fix-el6
+============
+
+DISA STIG Scripts to harden a system to the RHEL 6 STIG.
+
+These scripts will harden a system to specifications that
+are based upon the the following previous hardening 
+provided by the following projects:
+
+     DISA RHEL 6 STIG
+
+     NIST 800-53 SCAP (USGCB)
+
+     NSA SNAC Guide for Red Hat Enterprise Linux
+
+     Aqueduct Project
+     https://fedorahosted.org/aqueduct
+
+     Tresys Certifiable Linux Integration Platform (CLIP)
+     http://oss.tresys.com/projects/clip
