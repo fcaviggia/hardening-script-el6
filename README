@@ -32,10 +32,13 @@ Scritps are designed to run out of /opt/stig-fix/ on a perferably fresh installa
 of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable incative users.)
 
 apply.sh - master script that runs scripts in cat1-cat4 and misc
-cat1 - CAT I STIG Findings
-cat2 - CAT II STIG Findings
-cat3 - CAT III STIG Findings
-cat4 - CAT IV STIG Findings
+toggle_nousb.sh - toggles the 'nousb' kernel flag only
+toggle_udf.sh - toggles 'udf' mounting of DVDs (USGCB Blacklists udf) 
+toggle_usb.sh - toggles 'nousb' kernel flag and the mass storage kernel module
+cat1 - CAT I STIG Scripts
+cat2 - CAT II STIG Scripts
+cat3 - CAT III STIG Scripts
+cat4 - CAT IV STIG Scripts
 misc - NSA SNAC, GNOME, and Other miscellenous lockdown scripts
 manual - Manaully run (There be dragons here)
 backups - Backup copy of modified files to compare and restore configurations
