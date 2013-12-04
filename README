@@ -1,20 +1,55 @@
 stig-fix-el6
 ============
 
+ABOUT
+=====
+
 DISA STIG Scripts to harden a system to the RHEL 6 STIG.
 
 These scripts will harden a system to specifications that
 are based upon the the following previous hardening 
 provided by the following projects:
 
-     DISA RHEL 6 STIG
+     DISA RHEL 6 STIG V1 R2
+     http://iase.disa.mil/stigs/os/unix/red_hat.html
 
-     NIST 800-53 SCAP (USGCB)
+     NIST 800-53 (USGCB) Content for RHEL 5
+     http://usgcb.nist.gov/usgcb/rhel_content.html
 
-     NSA SNAC Guide for Red Hat Enterprise Linux
+     NSA SNAC Guide for Red Hat Enterprise Linux 5
+     http://www.nsa.gov/ia/_files/os/redhat/NSA_RHEL_5_GUIDE_v4.2.pdf
 
      Aqueduct Project
      https://fedorahosted.org/aqueduct
 
      Tresys Certifiable Linux Integration Platform (CLIP)
      http://oss.tresys.com/projects/clip
+     
+CONTENT
+=======
+
+Scritps are designed to run out of /opt/stig-fix/ on a perferably fresh installation
+of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable incative users.)
+
+apply.sh - master script that runs scripts in cat1-cat4 and misc
+cat1 - CAT I STIG Findings
+cat2 - CAT II STIG Findings
+cat3 - CAT III STIG Findings
+cat4 - CAT IV STIG Findings
+misc - NSA SNAC, GNOME, and Other miscellenous lockdown scripts
+manual - Manaully run (There be dragons here)
+backups - Backup copy of modified files to compare and restore configurations
+
+Run is logged in /var/log/stig-fix-YYYY-MM-DD.log
+
+PROJECT WORK
+============
+
+- Map DISA STIG RHEL 5 GEN controls to DISA STIG RHEL 6 SRG and NIST 800-53 controls
+  (each sub script has an echo block stating what GEN it applies to - adding the SRG
+  and NIST controls will help security people to understand what was inteneded during
+  the C&A process.
+
+- Help verify the configurations against SSG OpenSCAP Content
+
+- Add updates to with new security features in RHEL 6.5 and newer
