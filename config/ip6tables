@@ -1,0 +1,20 @@
+# Firewall configuration written by system-config-firewall
+# Manual customization of this file is not recommended.
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+#-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+-A INPUT -p ipv6-icmp --icmpv6-type 128 -m limit --limit 15/sec -j ACCEPT
+-A INPUT -p ipv6-icmp --icmpv6-type 129 -m limit --limit 15/sec -j ACCEPT
+-A INPUT -p ipv6-icmp --icmpv6-type 133 -m hl --hl-eq 255 -j ACCEPT
+-A INPUT -p ipv6-icmp --icmpv6-type 134 -m hl --hl-eq 255 -j ACCEPT
+-A INPUT -p ipv6-icmp --icmpv6-type 135 -m hl --hl-eq 255 -j ACCEPT
+-A INPUT -p ipv6-icmp --icmpv6-type 136 -m hl --hl-eq 255 -j ACCEPT
+-A INPUT -p ipv6-icmp --icmpv6-type 137 -m hl --hl-eq 255 -j ACCEPT
+-A INPUT -p ipv6-icmp -j LOG --log-prefix "Dropped ICMPv6 Packets "
+-A INPUT -p ipv6 -j DROP
+COMMIT
