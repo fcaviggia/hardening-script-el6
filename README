@@ -28,8 +28,9 @@ provided by the following projects:
 CONTENT
 =======
 
-Scritps are designed to run out of /opt/stig-fix/ on a perferably fresh installation
-of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable incative users.)
+Scritps are designed to run out of /opt/stig-fix/ on a perferably fresh
+installation of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable 
+incative users.)
 
 apply.sh - master script that runs scripts in cat1-cat4 and misc
 toggle_nousb.sh - toggles the 'nousb' kernel flag only
