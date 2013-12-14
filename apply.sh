@@ -204,7 +204,8 @@ fi
 # CHANGE DIRECTORY TO BASE DIR
 cd $BASE_DIR
 
-#### START SSH FOR KEY GENERATION
+#### SSH CONIFIGURATION
+cp -f ./config/sshd_config /etc/ssh/sshd_config
 `ls /etc/ssh/ssh_host_* | grep -q key`
 if [ $? -ne 0 ]; then
 	/etc/init.d/sshd restart &> /dev/null
