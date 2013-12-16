@@ -66,11 +66,11 @@ while getopts ":h" OPTION; do
 	esac
 done
 
-
-if [ -e $KERNEL_MODULE ]; then
-	remove_configuration
-else
+NOUSB=$( cat /boot/grub/grub.conf | grep -i kernel | grep -i nousb | wc -l )
+if [ $NOUSB -eq 0 ]; then
 	apply_configuration
+else
+	remove_confiruation
 fi
 
 exit 0
