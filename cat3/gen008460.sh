@@ -35,10 +35,20 @@
 PDI=GEN008460
 
 #Start-Lockdown
-NOUSB=$( cat /boot/grub/grub.conf |grep -i kernel | grep -i nousb | wc -l )
-if [ $NOUSB -eq 0 ]; then
-	echo '==================================================='
-	echo ' Patching GEN008460: Disable usb Devices'
-	echo '==================================================='
-	/sbin/grubby --update-kernel=ALL --args="nousb"
+echo '==================================================='
+echo ' Patching GEN008460: Disable USB Mass Storage'
+echo '==================================================='
+BASE_DIR=/opt/stig-fix
+BASE_BACKUP=$BASE_DIR/backups
+KERNEL=`uname -r`
+KERNEL_MODULE="/lib/modules/$KERNEL/kernel/drivers/usb/storage/usb-storage.ko"
+if [ ! -e $BASE_BACKUP/usb-storage.ko.$KERNEL ]; then
+	cp $KERNEL_MODULE $BASE_BACKUP/usb-storage.ko.$KERNEL
 fi
+# Remove USB Kernel Module
+/sbin/lsmod | grep -q usb_storage
+if [ $? -eq 0 ]; then
+	/sbin/rmmod usb_storage
+fi
+
+rm -f $KERNEL_MODULE
