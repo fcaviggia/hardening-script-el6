@@ -174,6 +174,10 @@ if [ ! -f "$BACKUP/system-auth.pam.orig" ]; then
 	cp /etc/pam.d/system-auth $BACKUP/system-auth.pam.orig
 fi
 
+if [ ! -f "$BACKUP/system-auth.pam.orig" ]; then
+	cp /etc/pam.d/password-auth $BACKUP/pasword-auth.pam.orig
+fi
+
 if [ ! -f "$BACKUP/ntp.conf.orig" ]; then
 	cp /etc/ntp.conf $BACKUP/ntp.conf.orig
 fi
@@ -232,8 +236,10 @@ cp -f ./config/iptables /etc/sysconfig/iptables
 cp -f ./config/ip6tables /etc/sysconfig/ip6tables
 
 #### PAM CONFIGURATIONS
-cp -f ./config/system-auth.pam /etc/pam.d/system-auth-local
+cp -f ./config/system-auth-local /etc/pam.d/system-auth-local
 ln -sf /etc/pam.d/system-auth-local /etc/pam.d/system-auth 
+cp -f ./config/password-auth-local /etc/pam.d/password-auth-local
+ln -sf /etc/pam.d/password-auth-local /etc/pam.d/password-auth
 
 #### NTP CONFIGURATIONS
 cp -f ./config/ntp.conf /etc/ntp.conf
