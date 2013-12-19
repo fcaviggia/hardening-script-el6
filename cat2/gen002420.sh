@@ -75,3 +75,21 @@ SED=`which sed`
             MNT_OPTS=$(grep " \/var\/tmp " ${FSTAB} | awk '{print $4}')
             ${SED} -i "s/\( \/var\/tmp.*${MNT_OPTS}\)/\1,nodev,noexec,nosuid/" ${FSTAB}
     fi
+    
+     #nodev,noexec,nosuid on /var/log
+    if [ $(grep " \/var\/log " ${FSTAB} | grep -c "nodev") -eq 0 ]; then
+            MNT_OPTS=$(grep " \/var\/tmp " ${FSTAB} | awk '{print $4}')
+            ${SED} -i "s/\( \/var\/tmp.*${MNT_OPTS}\)/\1,nodev,noexec,nosuid/" ${FSTAB}
+    fi
+
+    #nodev,noexec,nosuid on /var/audit
+    if [ $(grep " \/var\/log\/audit " ${FSTAB} | grep -c "nodev") -eq 0 ]; then
+            MNT_OPTS=$(grep " \/var\/log\/audit " ${FSTAB} | awk '{print $4}')
+            ${SED} -i "s/\( \/var\/log\/audit.*${MNT_OPTS}\)/\1,nodev,noexec,nosuid/" ${FSTAB}
+    fi
+
+    #nodev,nosuid on /var/
+    if [ $(grep " \/var " ${FSTAB} | grep -c "nodev") -eq 0 ]; then
+            MNT_OPTS=$(grep " \/var " ${FSTAB} | awk '{print $4}')
+            ${SED} -i "s/\( \/var.*${MNT_OPTS}\)/\1,nodev,nosuid/" ${FSTAB}
+    fi
