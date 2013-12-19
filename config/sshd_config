@@ -34,7 +34,7 @@ Protocol 2
 # obsoletes QuietMode and FascistLogging
 #SyslogFacility AUTH
 SyslogFacility AUTHPRIV
-#LogLevel INFO
+LogLevel INFO
 
 # Authentication:
 AllowGroups sshusers
@@ -104,13 +104,13 @@ AcceptEnv XMODIFIERS
 
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
-#GatewayPorts no
-#X11Forwarding no
-X11Forwarding yes
+GatewayPorts no
+X11Forwarding no
+#X11Forwarding yes
 #X11DisplayOffset 10
 #X11UseLocalhost yes
 #PrintMotd yes
-#PrintLastLog yes
+PrintLastLog yes
 #TCPKeepAlive yes
 #UseLogin no
 UsePrivilegeSeparation yes
@@ -142,6 +142,6 @@ RhostsRSAAuthentication no
 Compression delayed
 # Added for DISA GEN005526
 KerberosAuthentication no
-# FIPS 140-2 Encryption
+# FIPS 140-2 Encryption (Highest Level using Counter Mode)
 Ciphers aes256-ctr,aes192-ctr,aes128-ctr
 MACs hmac-sha1
