@@ -182,6 +182,10 @@ if [ ! -f "$BACKUP/ntp.conf.orig" ]; then
 	cp /etc/ntp.conf $BACKUP/ntp.conf.orig
 fi
 
+if [ ! -f "$BACKUP/profile.orig" ]; then
+	cp /etc/profile $BACKUP/profile.orig
+fi
+
 if [ ! -f "$BACKUP/iptables.orig" ]; then
 	cp /etc/sysconfig/iptables /etc/sysconfig/iptables.orig
 	cp /etc/sysconfig/iptables $BACKUP/iptables.orig
