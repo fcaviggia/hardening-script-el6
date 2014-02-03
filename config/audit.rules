@@ -6,12 +6,8 @@
 # Remove any existing rules
 -D
 
-# Enable auditing
--e 2
-
-# Depricated option as of RHEL 6.5 (produces an error)
 # Increase kernel buffer size
-#-b 8192
+-b 8192
 
 # Failure of auditd causes a kernel panic
 -f 2
