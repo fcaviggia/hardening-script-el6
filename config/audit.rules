@@ -9,8 +9,9 @@
 # Enable auditing
 -e 2
 
+# Depricated option as of RHEL 6.5 (produces an error)
 # Increase kernel buffer size
--b 8192
+#-b 8192
 
 # Failure of auditd causes a kernel panic
 -f 2
@@ -104,9 +105,9 @@
 ##############################
 
 #2.6.2.4.1 Records Events that Modify Date and Time Information
--a always,exit -F arch=b32 -S adjtimex -S settimeofday -k time-change
+-a always,exit -F arch=b32 -S adjtimex -S stime -S settimeofday -k time-change
 -a always,exit -F arch=b32 -S clock_settime -k time-change
--a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
+-a always,exit -F arch=b64 -S adjtimex -S stime -S settimeofday -k time-change
 -a always,exit -F arch=b64 -S clock_settime -k time-change
 -w /etc/localtime -p wa -k time-change
 
