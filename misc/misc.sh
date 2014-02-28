@@ -51,7 +51,6 @@ if [ $(grep -c isso /etc/group) -eq 0 ]; then
 fi
 
 ##### SUDO Access (Adds sudo access for wheel group and limited root role for isso group.)
-cp -f ../config/sudoers /etc/sudoers
 chmod 0440 /etc/sudoers
 chown root:root /etc/sudoers
 
