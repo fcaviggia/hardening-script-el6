@@ -116,6 +116,23 @@ HOWTO
           /sbin/toggle_usb.sh (for enabling and disabling USB storage)
           /sbin/toggle_nousb.sh (for enabling USB Keyboards that don't work with the 'nousb' kernel option)
 
+  13. Create users:
+  
+          Remote Access (no ssh without this group)
+
+               # useradd -m -c "Remote User" -G sshusers remoteuser
+  
+          System Administrator (SA)
+               
+               # useradd -m -c "System Administrator" -G sshusers,wheel admin
+          
+          Audit Administrator (AA)
+          
+               # useradd -m -c "Audit Administrator" -G sshusers,isso auditor
+               
+          (Optional) After adding SAs to the system, lock the root account:
+       
+               # passwd -l root
 
 PROJECT WORK
 ============
