@@ -182,6 +182,10 @@ if [ ! -f "$BACKUP/system-auth.pam.orig" ]; then
 	cp /etc/pam.d/password-auth $BACKUP/pasword-auth.pam.orig
 fi
 
+if [ ! -f "$BACKUP/sudoers.orig" ]; then
+	cp /etc/sudoers $BACKUP/sudoers.orig
+fi
+
 if [ ! -f "$BACKUP/ntp.conf.orig" ]; then
 	cp /etc/ntp.conf $BACKUP/ntp.conf.orig
 fi
@@ -249,6 +253,9 @@ ln -sf /etc/pam.d/system-auth-local /etc/pam.d/system-auth
 cp -f ./config/password-auth-local /etc/pam.d/password-auth-local
 ln -sf /etc/pam.d/password-auth-local /etc/pam.d/password-auth
 cp -f ./config/gnome-screensaver /etc/pam.d/gnome-screensaver
+
+##### SUDO CONFIGURATION (isso role, sudo access for wheel)
+cp -f ./config/sudoers /etc/sudoers
 
 #### NTP CONFIGURATIONS
 cp -f ./config/ntp.conf /etc/ntp.conf
