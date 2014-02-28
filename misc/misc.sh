@@ -45,6 +45,16 @@ if [ $(grep -c sshusers /etc/group) -eq 0 ]; then
 	/usr/sbin/groupadd sshusers &> /dev/null
 fi
 
+##### Add isso group (Auditors)
+if [ $(grep -c isso /etc/group) -eq 0 ]; then
+	/usr/sbin/groupadd isso &> /dev/null
+fi
+
+##### SUDO Access (Adds sudo access for wheel group and limited root role for isso group.)
+cp -f ../config/sudoers /etc/sudoers
+chmod 0440 /etc/sudoers
+chown root:root /etc/sudoers
+
 ##### VLOCK ALIAS
 cat <<EOF > /etc/profile.d/vlock-alias.sh
 #!/bin/sh
@@ -63,3 +73,6 @@ chmod 755 /etc/profile.d/vlock-alias.csh
 
 ##### CLEAN YUM
 /usr/bin/yum clean all &>/dev/null
+
+#### RESTORECON
+/sbin/restorecon -R /etc
