@@ -174,6 +174,10 @@ if [ ! -f "$BACKUP/system-auth.pam.orig" ]; then
 	cp /etc/pam.d/system-auth $BACKUP/system-auth.pam.orig
 fi
 
+if [ ! -f "$BACKUP/gnome-screensaver.orig" ]; then
+	cp /etc/pam.d/gnome-screensaver $BACKUP/gnome-screensaver.orig
+fi
+
 if [ ! -f "$BACKUP/system-auth.pam.orig" ]; then
 	cp /etc/pam.d/password-auth $BACKUP/pasword-auth.pam.orig
 fi
@@ -244,6 +248,7 @@ cp -f ./config/system-auth-local /etc/pam.d/system-auth-local
 ln -sf /etc/pam.d/system-auth-local /etc/pam.d/system-auth 
 cp -f ./config/password-auth-local /etc/pam.d/password-auth-local
 ln -sf /etc/pam.d/password-auth-local /etc/pam.d/password-auth
+cp -f ./config/gnome-screensaver /etc/pam.d/gnome-screensaver
 
 #### NTP CONFIGURATIONS
 cp -f ./config/ntp.conf /etc/ntp.conf
