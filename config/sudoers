@@ -105,8 +105,8 @@ root	ALL=(ALL) 	ALL
 %wheel	ALL=(ALL)	ALL
 
 ## Auditor Role ISSO
-Cmnd_Alias AUDIT = /sbin/aureport, /sbin/ausearch, /usr/sbin/logwatch, /bin/ls, /bin/more, /usr/bin/less, /usr/bin/tail, /usr/bin/head
-%isso	ALL=(ALL)	AUDIT
+Cmnd_Alias AUDIT = /sbin/aureport, /sbin/ausearch, /usr/sbin/logwatch, /bin/ls, /bin/more, /usr/bin/less, /usr/bin/tail, /usr/bin/head, /usr/bin/who, /usr/bin/last, /usr/bin/file
+%isso	ALL=(root)	AUDIT
 
 ## Same thing without a password
 # %wheel	ALL=(ALL)	NOPASSWD: ALL
