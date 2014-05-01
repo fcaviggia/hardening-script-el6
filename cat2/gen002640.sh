@@ -10,7 +10,7 @@ echo ' Patching GEN002640: Lock default system accounts'
 echo '==================================================='
 for NAME in `cut -d: -f1 /etc/passwd`; do
 	NAMEID=`id -u $NAME`
-	if [ $NAMEID -lt 500 -a $NAME != 'root' -a $NAME != 'oracle' ]; then
+	if [ $NAMEID -lt 500 -a $NAME != 'root' -a $NAME != 'oracle' -a $NAME != 'postgresql' ]; then
      		/usr/sbin/usermod -L -s /sbin/nologin $NAME
      	fi
 done
