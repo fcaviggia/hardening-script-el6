@@ -69,11 +69,11 @@ echo '==================================================='
 PDI=GEN003865
 
 #Start-Lockdown
-for NETPKG in wireshark wireshark-gnome nc tcpdump; do
+for NETPKG in wireshark wireshark-gnome nc tcpdump nmap; do
 	rpm -q $NETPKG
   	if [ $? -eq 0 ]; then
 		rpm -e --nodeps $NETPKG
   	fi
 done
 
-find / -name wireshark -o -name wireshark -o -name wireshark-gnome -o -name nc -o -name tcpdump -o -name snoop -o -name tshark -exec rm -f {} \; 
+find / -name wireshark -o -name wireshark -o -name wireshark-gnome -o -name nc -o -name tcpdump -o -name snoop -o -name tshark -o -name nmap -exec rm -f {} \; 
