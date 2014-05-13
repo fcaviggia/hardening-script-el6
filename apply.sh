@@ -14,7 +14,7 @@
 DATE=`date +%F`
 ARCH=`uname -i`
 VERSION='1.0'
-BASE_DIR=/opt/stig-fix
+BASE_DIR=`pwd`
 BACKUP=$BASE_DIR/backups
 CONFIG=$BASE_DIR/config
 LOG=/var/log/stig-fix-$DATE.log
