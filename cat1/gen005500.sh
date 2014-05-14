@@ -14,9 +14,9 @@ fi
 
 if [ `grep -c "^Ciphers" /etc/ssh/sshd_config` -gt 0 ]; then
 	sed -i "/Ciphers/d" /etc/ssh/sshd_config
-	echo 'Ciphers aes256-ctr,aes192-ctr,aes128-ctr' >> /etc/ssh/sshd_config
+	echo 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc' >> /etc/ssh/sshd_config
 else
-	echo 'Ciphers aes256-ctr,aes192-ctr,aes128-ctr' >> /etc/ssh/sshd_config
+	echo 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc' >> /etc/ssh/sshd_config
 fi
 
 if [ `grep -c "^MACs" /etc/ssh/sshd_config` -gt 0 ]; then
