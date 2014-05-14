@@ -6,7 +6,9 @@ echo '==================================================='
 
 AIDE=`rpm -q aide`
 if [ $? -eq 0 ]; then
+	echo "Initializing AIDE database, this may take a moment!"
 	/usr/sbin/aide --init &> /dev/null
+	echo "AIDE database initialization complete."
 	cp /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
 
 	if [ -a "/var/spool/cron/root" ]; then
