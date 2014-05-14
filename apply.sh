@@ -136,7 +136,7 @@ if [ $? -eq 0 ]; then
      echo '==================================================='
      echo ' Verifying RPM Requirements'
      echo '==================================================='
-     yum -y install aide srcub logwatch vlock screen openswan
+     yum -y install aide screen logwatch vlock screen openswan
 fi
 
 # BACKUP ORIGINAL SYSTEM CONFIGURATIONS
