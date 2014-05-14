@@ -131,6 +131,14 @@ fi
 echo "SCRIPT RUN: $(date)" >> $LOG
 echo "Starting Configuration" >> $LOG
 
+`rhn_check`
+if [ $? -eq 0 ]; then
+     echo '==================================================='
+     echo ' Patching RPM Requirements'
+     echo '==================================================='
+     yum -y install aide srcub logwatch vlock screen
+fi
+
 # BACKUP ORIGINAL SYSTEM CONFIGURATIONS
 if [ -z "$QUIET" ]; then
 	echo -n "Back up current configuration... " | tee -a $LOG
