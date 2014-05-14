@@ -136,7 +136,7 @@ if [ $? -eq 0 ]; then
      echo '==================================================='
      echo ' Patching RPM Requirements'
      echo '==================================================='
-     yum -y install aide srcub logwatch vlock screen
+     yum -y install aide srcub logwatch vlock screen openswan
 fi
 
 # BACKUP ORIGINAL SYSTEM CONFIGURATIONS
