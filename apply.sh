@@ -134,7 +134,7 @@ echo "Starting Configuration" >> $LOG
 `rhn_check`
 if [ $? -eq 0 ]; then
      echo '==================================================='
-     echo ' Patching RPM Requirements'
+     echo ' Verifying RPM Requirements'
      echo '==================================================='
      yum -y install aide srcub logwatch vlock screen openswan
 fi
@@ -194,6 +194,10 @@ if [ ! -f "$BACKUP/sudoers.orig" ]; then
 	cp /etc/sudoers $BACKUP/sudoers.orig
 fi
 
+if [ ! -f "$BACKUP/smb.conf.orig" ]; then
+	cp /etc/samba/smb.conf $BACKUP/smb.conf.orig
+fi
+
 if [ ! -f "$BACKUP/ntp.conf.orig" ]; then
 	cp /etc/ntp.conf $BACKUP/ntp.conf.orig
 fi
@@ -242,6 +246,9 @@ cp ./config/sysctl.conf /etc/sysctl.conf
 #### USER AND PASSWORD CONFIGURATIONS
 cp -f ./config/limits.conf /etc/security/limits.conf
 cp -f ./config/login.defs /etc/login.defs
+
+#### EXAMPLE SAMBA CONFIGURATION
+cp -f ./config/smb.conf /etc/samba/smb.conf
 
 #### AUDITING RULES
 cp -f ./config/auditd.conf /etc/audit/auditd.conf
