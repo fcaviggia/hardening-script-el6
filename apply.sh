@@ -1,6 +1,6 @@
 #!/bin/sh
 # This script was written by Frank Caviggia, Red Hat Consulting
-# Last update was 13 May 2014
+# Last update was 16 May 2014
 # This script is NOT SUPPORTED by Red Hat Global Support Services.
 # Please contact Josh Waldman for more information.
 #
@@ -10,11 +10,21 @@
 # Copyright: Red Hat Consulting, Sep 2013
 # Author: Frank Caviggia <fcaviggi (at) redhat.com>
 
+# Determine the Path
+function realpath() {
+    local r=$1; local t=$(readlink $r)
+    while [ $t ]; do
+        r=$(cd $(dirname $r) && cd $(dirname $t) && pwd -P)/$(basename $t)
+        t=$(readlink $r)
+    done
+    echo $r
+}
+
 # ENVIRONMENT VARIABLES
 DATE=`date +%F`
 ARCH=`uname -i`
-VERSION='1.0.1'
-BASE_DIR=`pwd -P`
+VERSION='1.1'
+BASE_DIR=`dirname $(realpath $0)`
 BACKUP=$BASE_DIR/backups
 CONFIG=$BASE_DIR/config
 LOG=/var/log/stig-fix-$DATE.log
