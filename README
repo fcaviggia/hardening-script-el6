@@ -118,7 +118,13 @@ HOWTO
           /sbin/toggle_usb (for enabling and disabling USB storage)
           /sbin/toggle_nousb (for enabling USB Keyboards that don't work with the 'nousb' kernel option)
 
-  13. Create users:
+  13. Configure Firewalls/TCP_WRAPPERS:
+  
+          Edit the iptables, ip6tables, hosts.allow, and hosts.deny as requried, copy any changes
+          back to to ./config/ directory for iptables/ip6tables and modify cat2/gen006620.sh (TCP_WRAPPERS)
+          to ensure changes are applied if the stig-fix command is run again.
+
+  14. Create users:
   
           Remote Access (no ssh without this group)
 
@@ -135,6 +141,7 @@ HOWTO
           (Optional) After adding SAs to the system, lock the root account:
        
                # passwd -l root
+               
 
 PROJECT WORK
 ============
