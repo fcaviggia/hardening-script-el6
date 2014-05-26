@@ -45,9 +45,9 @@ apply_configuration() {
 
 		  `grep -q NETWORKING_IPV6 /etc/sysconfig/network`
 		  if [ $? -ne 0 ]; then
-				echo "NETWORKING_IPV6=yes" >> /etc/sysconfig/network
+			    echo "NETWORKING_IPV6=yes" >> /etc/sysconfig/network
 		  else
-				sed -i 's/NETWORKING_IPV6=no/NETWORKING_IPV6=yes/g' /etc/sysconfig/network
+			    sed -i 's/NETWORKING_IPV6=no/NETWORKING_IPV6=yes/g' /etc/sysconfig/network
 		  fi
 
 		  `grep -q IPV6INIT /etc/sysconfig/network`
@@ -66,6 +66,7 @@ apply_configuration() {
 			    fi
 		  done
 		  
+		  modprobe ipv6 &>/dev/null
 		  service ip6tables restart &>/dev/null
 		  chkconfig ip6tables on &>/dev/null
 
