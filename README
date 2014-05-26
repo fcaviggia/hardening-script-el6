@@ -64,7 +64,7 @@ HOWTO
           /var/log
           /var/log/audit
           /var/www (Optional, Web Servers)
-          /rhnsat (Optional, RHN Satellite)
+          /rhnsat (Optional, RHN Satellite 5.5 and earlier, 5.6 uses /var)
           /opt (Optional, Commercial Applications)
 
    4. Select a GRUB password (SHA512, using grub-crypt or during Install)
