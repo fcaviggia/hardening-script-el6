@@ -65,12 +65,9 @@ apply_configuration() {
 				      sed -i "/IPV6INIT/s/no/yes/" $NET
 			    fi
 		  done
-
-		  chkconfig --list ip6tables | grep ':on' > /dev/null
-		  if [ $? -eq 0 ]; then 
-        	    service ip6tables restart &>/dev/null
-                chkconfig ip6tables on &>/dev/null
-		  fi
+		  
+		  service ip6tables restart &>/dev/null
+		  chkconfig ip6tables on &>/dev/null
 
 		  logger "Enabled IPv6 Support (stig-fix)"
 		  echo "Done."
@@ -84,7 +81,7 @@ apply_configuration() {
         		echo "NETWORKING_IPV6=no" >> /etc/sysconfig/network
 		  else
           	    sed -i 's/NETWORKING_IPV6=yes/NETWORKING_IPV6=no/g' /etc/sysconfig/network
-          fi
+		  fi
 
 		  `grep -q IPV6INIT /etc/sysconfig/network`
 		  if [ $? -ne 0 ]; then
@@ -102,12 +99,9 @@ apply_configuration() {
 			    fi
 		  done
 
-		  chkconfig --list ip6tables | grep ':on' > /dev/null
-		  if [ $? -eq 0 ]; then 
-			    rmmod ipv6 &>/dev/null
-          service ip6tables stop &>/dev/null
-			    chkconfig ip6tables off &>/dev/null
-		  fi
+		  rmmod ipv6 &>/dev/null
+		  service ip6tables stop &>/dev/null
+		  chkconfig ip6tables off &>/dev/null
 
 		  logger "Disabled IPv6 Support (stig-fix)"
 		  echo "Done."
