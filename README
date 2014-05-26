@@ -33,6 +33,7 @@ installation of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable
 incative users.)
 
 apply.sh - master script that runs scripts in cat1-cat4 and misc
+toggle_ipv6.sh - toggles IPv6 support, requires reboot (default is off)
 toggle_nousb.sh - toggles the 'nousb' kernel flag only
 toggle_udf.sh - toggles 'udf' mounting of DVDs (USGCB Blacklists udf) 
 toggle_usb.sh - toggles 'nousb' kernel flag and the mass storage kernel module
@@ -110,11 +111,12 @@ HOWTO
    9. Configure Syslog forwarding (/etc/rsyslog.conf) to a local rsyslog instance (or Splunk as the case may be)
   10. Add users with root access to the 'wheel' group, for users with ssh access add them to the 'sshusers' group.
   11. Review the manual scripts in (/opt/stig-fix/manual) - putting the kernel in FIPS 140-2 mode can cause various weaker authentication not to work (e.g. RHN Satellite is still using md5)
-  12. The following scripts have been included for convenience:
+  12. The following scripts have been included for convenience (RPM Symbolic Links to scripts):
 
-          /sbin/toggle_udf.sh (for mounting DVDs)
-          /sbin/toggle_usb.sh (for enabling and disabling USB storage)
-          /sbin/toggle_nousb.sh (for enabling USB Keyboards that don't work with the 'nousb' kernel option)
+          /sbin/toggle_ipv6 (for IPv6 support - defualt is off)
+          /sbin/toggle_udf (for mounting DVDs)
+          /sbin/toggle_usb (for enabling and disabling USB storage)
+          /sbin/toggle_nousb (for enabling USB Keyboards that don't work with the 'nousb' kernel option)
 
   13. Create users:
   
