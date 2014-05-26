@@ -45,7 +45,7 @@ apply_configuration() {
 
 		  `grep -q NETWORKING_IPV6 /etc/sysconfig/network`
 		  if [ $? -ne 0 ]; then
-        		echo "NETWORKING_IPV6=yes" >> /etc/sysconfig/network
+				echo "NETWORKING_IPV6=yes" >> /etc/sysconfig/network
 		  else
 				sed -i 's/NETWORKING_IPV6=no/NETWORKING_IPV6=yes/g' /etc/sysconfig/network
 		  fi
