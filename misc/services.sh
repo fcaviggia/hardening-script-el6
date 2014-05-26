@@ -27,7 +27,7 @@ for SRV in $ONSRV; do
 done
 
 ### IPv6 - Requires ip6tables
-`grep ipv6 $BLACKLIST | grep -q "#"`
+`grep ipv6 /etc/modprobe.d/usgcb-blacklist.conf | grep -q "#"`
 if [ $? -ne 0 ]; then
 	echo "Enabling ip6tables Service."
 	/sbin/chkconfig $SRV on &> /dev/null
