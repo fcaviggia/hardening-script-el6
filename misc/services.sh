@@ -16,7 +16,7 @@ for SRV in $OFFSRV; do
 done
 
 ### Enable Services
-ONSRV="auditd postfix iptables rsyslog ip6tables"
+ONSRV="auditd postfix iptables rsyslog"
 
 for SRV in $ONSRV; do
 	if [ `/sbin/chkconfig --list | grep -c $SRV` -gt 0 ]; then
@@ -25,6 +25,18 @@ for SRV in $ONSRV; do
 		/sbin/service $SRV start &> /dev/null
 	fi
 done
+
+### IPv6 - Requires ip6tables
+`grep ipv6 $BLACKLIST | grep -q "#"`
+if [ $? -ne 0 ]; then
+	echo "Enabling ip6tables Service."
+	/sbin/chkconfig $SRV on &> /dev/null
+	/sbin/service $SRV start &> /dev/null
+else
+	echo "Disabling ip6tables Service."
+	/sbin/chkconfig $SRV off &> /dev/null
+	/sbin/service $SRV stop &> /dev/null
+fi
 
 ### Unsure
 UNSURE="pcscd"
