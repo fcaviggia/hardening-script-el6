@@ -6,12 +6,11 @@
 # Copyright: Red Hat Consulting, Sep 2013
 # Author: Frank Caviggia <fcaviggi (at) redhat.com>
 
-
 # Determine the Path
 function realpath() {
     local r=$1; local t=$(readlink $r)
     while [ $t ]; do
-r=$(cd $(dirname $r) && cd $(dirname $t) && pwd -P)/$(basename $t)
+        r=$(cd $(dirname $r) && cd $(dirname $t) && pwd -P)/$(basename $t)
         t=$(readlink $r)
     done
 echo $r
