@@ -70,8 +70,8 @@ HOWTO
    4. Select a GRUB password (SHA512, using grub-crypt or during Install)
    5. Install a minimal installation (include rsyslog, ntp, aide, scrub, vlock, screen, logwatch, openswan, 
    openscap, openscap-utils, dracut-fips)
-   6. Register a system with a patch server - either a disconnected RHN Satellite or local/web-based (preferably SSL)
-   repository:
+   6. Register a system with a patch server - either a disconnected RHN Satellite or local/web-based 
+   (preferably SSL) repository:
 
           Kickstart can register a system with rhnreg_ks --activationkey="<KEY>"
           
@@ -128,11 +128,18 @@ HOWTO
 
   13. Configure Firewalls/TCP_WRAPPERS:
   
-          Edit the iptables, ip6tables, hosts.allow, and hosts.deny as requried, copy any changes back to to ./config/
-          directory for iptables/ip6tables and modify cat2/gen006620.sh (TCP_WRAPPERS) to ensure changes are applied 
-          if the stig-fix command is run again.
+          Edit the iptables, ip6tables, hosts.allow, and hosts.deny as requried, copy any changes back to 
+          the ./config/ directory for iptables/ip6tables and modify cat2/gen006620.sh (TCP_WRAPPERS) to 
+          ensure changes are applied if the stig-fix command is run again.
 
-  14. Create users:
+  15. Install site approved monitoring tools and virus scan. Examples include, but are not limited to, the following:
+  
+          - McAfee VSE for Linux
+          - McAfee HBSS
+          - ClamAV
+          - HP OpenView
+  
+  15. Create users:
   
           Remote Access (no ssh without this group)
 
