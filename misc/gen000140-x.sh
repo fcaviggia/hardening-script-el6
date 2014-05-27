@@ -6,7 +6,10 @@ echo '==================================================='
 
 AIDE=`rpm -q aide`
 if [ $? -eq 0 ]; then
-	echo "Initializing AIDE database, this may take a moment!"
+   if [ -e /var/lib/aide/aide.db.gz ]; then
+   	echo "AIDE Previously Configured."
+   else
+	echo "Initializing AIDE database, this step may take quite a while!"
 	/usr/sbin/aide --init &> /dev/null
 	echo "AIDE database initialization complete."
 	cp /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
@@ -27,6 +30,7 @@ if [ $? -eq 0 ]; then
 		echo "0 0 * * 0     /usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT.txt 2>&1" >> /var/spool/cron/root
 		chmod 600 /var/spool/cron/root
 	fi
+    fi
 else
 	echo "FINDING: AIDE NOT INSTALLED."
 fi
