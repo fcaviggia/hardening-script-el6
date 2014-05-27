@@ -37,7 +37,7 @@ EOF
 
 # APPLY SYSTEM CONFIGURATION
 apply_configuration() {
-    `grep ipv6 $BLACKLIST | grep -q "#"`
+    `grep NETWORKING_IPV6 /etc/sysconfig/network | grep -q yes`
     if [ $? -ne 0 ]; then
 		  echo -n "Enable IPv6... "
 		  sed -i '/^options ipv6 disable=1/ c\#options ipv6 disable=1' $BLACKLIST
