@@ -216,6 +216,10 @@ if [ ! -f "$BACKUP/profile.orig" ]; then
 	cp /etc/profile $BACKUP/profile.orig
 fi
 
+if [ ! -f "$BACKUP/logrotate.orig" ]; then
+	cp /etc/logrotate.conf $BACKUP/logrotate.orig
+fi
+
 if [ ! -f "$BACKUP/iptables.orig" ]; then
 	cp /etc/sysconfig/iptables /etc/sysconfig/iptables.orig
 	cp /etc/sysconfig/iptables $BACKUP/iptables.orig
@@ -281,6 +285,9 @@ cp -f ./config/gnome-screensaver /etc/pam.d/gnome-screensaver
 
 ##### SUDO CONFIGURATION (isso role, sudo access for wheel)
 cp -f ./config/sudoers /etc/sudoers
+
+##### LOGROTATE (DAILY)
+cp -f ./config/logrotate.conf /etc/logrotate.conf
 
 #### NTP CONFIGURATIONS
 cp -f ./config/ntp.conf /etc/ntp.conf
