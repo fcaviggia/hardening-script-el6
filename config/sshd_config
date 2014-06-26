@@ -78,7 +78,7 @@ ChallengeResponseAuthentication no
 
 # GSSAPI options
 #GSSAPIAuthentication no
-GSSAPIAuthentication no
+GSSAPIAuthentication yes
 #GSSAPICleanupCredentials yes
 GSSAPICleanupCredentials yes
 #GSSAPIStrictAcceptorCheck yes
