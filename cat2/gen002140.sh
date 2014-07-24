@@ -61,7 +61,7 @@ for CURSHELL in `awk -F':' '{print $7}' /etc/passwd | sort | uniq`;do
 done
 
 # remove any that don't belong
-for BADSHELL in '/usr/bin/false /bin/false /dev/null /sbin/nologin /bin/sync /sbin/halt /sbin/shutdown sdshell'; do
+for BADSHELL in /usr/bin/false /bin/false /dev/null /sbin/nologin /bin/sync /sbin/halt /sbin/shutdown sdshell; do
 
   grep "$BADSHELL" /etc/shells > /dev/null
   if [ $? -eq 0 ]; then
