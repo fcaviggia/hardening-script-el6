@@ -160,6 +160,14 @@ if [ ! -d $BACKUP ]; then
 	mkdir -p $BACKUP
 fi
 
+if [ ! -f "$BACKUP/issue.orig" ]; then
+	cp /etc/issue $BACKUP/issue.orig
+fi
+
+if [ ! -f "$BACKUP/issue.net.orig" ]; then
+	cp /etc/issue.net $BACKUP/issue.net.orig
+fi
+
 if [ ! -f "$BACKUP/sysctl.conf.orig" ]; then
 	cp /etc/sysctl.conf $BACKUP/sysctl.conf.orig
 fi
