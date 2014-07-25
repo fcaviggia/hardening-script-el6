@@ -212,6 +212,10 @@ if [ ! -f "$BACKUP/ntp.conf.orig" ]; then
 	cp /etc/ntp.conf $BACKUP/ntp.conf.orig
 fi
 
+if [ ! -f "$BACKUP/krb5.conf.orig" ]; then
+	cp /etc/krb5.conf $BACKUP/krb5.conf.orig
+fi
+
 if [ ! -f "$BACKUP/profile.orig" ]; then
 	cp /etc/profile $BACKUP/profile.orig
 fi
@@ -291,6 +295,9 @@ cp -f ./config/logrotate.conf /etc/logrotate.conf
 
 #### NTP CONFIGURATIONS
 cp -f ./config/ntp.conf /etc/ntp.conf
+
+#### KERBEROS CONFIGURATIONS
+cp -f ./config/krb5.conf /etc/krb5.conf
 
 if [ -z "$QUIET" ]; then
 	echo "Done." | tee -a $LOG
