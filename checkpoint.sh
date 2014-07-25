@@ -69,7 +69,7 @@ apply_configuration() {
 
 	#### AUDITING RULES
 	cp -f /etc/audit/auditd.conf $BASE_CONFIG/auditd.conf
-	cp -f /etc/audit/audit.rules $BASE_CONFIG/audit.ruled
+	cp -f /etc/audit/audit.rules $BASE_CONFIG/audit.rules
 
 	#### FIREWALL CONFIGURATIONS (IPV4/IPV6)
 	cp -f /etc/sysconfig/iptables $BASE_CONFIG/iptables
