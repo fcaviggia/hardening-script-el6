@@ -49,7 +49,10 @@ apply_configuration() {
 		esac
 	done
 
-	tar czfp $BASE_BACKUP/`hostname -s`-configuration-`date +%Y%m%d`.tar.gz $BASE_CONFIG
+	tar czfp $BASE_BACKUP/`hostname -s`-configuration-`date +%Y%m%d`.tar.gz $BASE_CONFIG &> /dev/null
+
+	#### ISSUE
+	cp -f /etc/issue $BASE_CONFIG/issue
 
 	#### SSH CONIFIGURATION
 	cp -f /etc/ssh/sshd_config $BASE_CONFIG/sshd_config
@@ -62,7 +65,7 @@ apply_configuration() {
 	cp -f /etc/login.defs $BASE_CONFIG/login.defs
 
 	#### EXAMPLE SAMBA CONFIGURATION
-	cp -f /etc/samba/smb.conf $BASE_CONFIG/smb.confg
+	cp -f /etc/samba/smb.conf $BASE_CONFIG/smb.confg &> /dev/null
 
 	#### AUDITING RULES
 	cp -f /etc/audit/auditd.conf $BASE_CONFIG/auditd.conf
