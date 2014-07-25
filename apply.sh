@@ -1,6 +1,6 @@
 #!/bin/sh
 # This script was written by Frank Caviggia, Red Hat Consulting
-# Last update was 16 May 2014
+# Last update was 25 July 2014
 # This script is NOT SUPPORTED by Red Hat Global Support Services.
 # Please contact Josh Waldman for more information.
 #
