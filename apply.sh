@@ -216,6 +216,14 @@ if [ ! -f "$BACKUP/krb5.conf.orig" ]; then
 	cp /etc/krb5.conf $BACKUP/krb5.conf.orig
 fi
 
+if [ ! -f "$BACKUP/hosts.allow.orig" ]; then
+	cp /etc/hosts.allow $BACKUP/hosts.allow.orig
+fi
+
+if [ ! -f "$BACKUP/hosts.deny.orig" ]; then
+	cp /etc/hosts.deny $BACKUP/hosts.deny.orig
+fi
+
 if [ ! -f "$BACKUP/profile.orig" ]; then
 	cp /etc/profile $BACKUP/profile.orig
 fi
@@ -298,6 +306,10 @@ cp -f ./config/ntp.conf /etc/ntp.conf
 
 #### KERBEROS CONFIGURATIONS
 cp -f ./config/krb5.conf /etc/krb5.conf
+
+#### TCP_WRAPPERS CONFIGURATIONS (was GEN006620)
+cp -f ./config/hosts.allow /etc/hosts.allow
+cp -f ./config/hosts.deny /etc/hosts.deny
 
 if [ -z "$QUIET" ]; then
 	echo "Done." | tee -a $LOG
