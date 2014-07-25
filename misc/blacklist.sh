@@ -42,6 +42,5 @@ echo -e "install rds /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 echo -e "install tipc /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 # CCE-14948-4 (row 176)
 echo -e "install net-pf-31 /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
-echo -e "install bluetooth /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 # DISA GEN007700
 echo -e "options ipv6 disable=1" >> /etc/modprobe.d/usgcb-blacklist.conf
