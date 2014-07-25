@@ -89,6 +89,10 @@ apply_configuration() {
 	#### KERBEROS CONFIGURATIONS
 	cp -f /etc/krb5.conf $BASE_CONFIG/krb5.conf
 
+	#### TCP_WRAPPERS CONFIGURATIONS
+	cp -f /etc/hosts.allow $BASE_CONFIG/hosts.allow
+	cp -f /etc/hosts.deny $BASE_CONFIG/hosts.deny
+	
 	/usr/bin/logger -p security.info "System Configuraiton Checkpointed (stig-fix)"
 }
 
