@@ -7,7 +7,7 @@ ABOUT
 DISA STIG Scripts to harden a system to the RHEL 6 STIG.
 
 These scripts will harden a system to specifications that
-are based upon the the following previous hardening 
+are based upon the the following hardening and specifications
 provided by the following projects:
 
      DISA RHEL 6 STIG V1 R2
@@ -33,6 +33,7 @@ installation of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable
 incative users.)
 
 apply.sh - master script that runs scripts in cat1-cat4 and misc
+checkpoint.sh - checkpoint the current configuration so re-running apply.sh will not squash changes
 toggle_ipv6.sh - toggles IPv6 support, requires reboot (default is off)
 toggle_nousb.sh - toggles the 'nousb' kernel flag only
 toggle_udf.sh - toggles 'udf' mounting of DVDs (USGCB Blacklists udf) 
@@ -158,7 +159,15 @@ various weaker authentication not to work (e.g. RHN Satellite is still using md5
           (Optional) After adding SAs to the system, lock the root account:
        
                # passwd -l root
-               
+
+16.  System Checkpoint - to prevent apply.sh from overwriting your configuration you should checkpoint your system.
+     A checkpoint will backup the current configuration into the 'backup' directory and overwrite the configurations
+     contained in the 'config' directory.
+     
+          # ./checkpoint.sh
+          
+     (In progress - working on a method to re-package script changes into a custom RPM for validation and to distribute 
+     configurations to other systems)
 
 PROJECT WORK
 ============
@@ -171,3 +180,5 @@ PROJECT WORK
 - Help verify the configurations against SSG OpenSCAP Content
 
 - Add updates to with new security features in RHEL 6.5 and newer
+
+- RPM re-package after system configuration checkpoint
