@@ -37,8 +37,8 @@ if [ -d /usr/share/tomcat6 ]; then
 	chown -R tomcat:tomcat /usr/share/tomcat6
 fi
 
-##### Allow /dev/null Acess
-chmod 0777 /dev/null
+##### Fix /dev/null Permssions
+chmod 666 /dev/null
 
 ##### Add sshusers group
 if [ $(grep -c sshusers /etc/group) -eq 0 ]; then
