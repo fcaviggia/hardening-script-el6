@@ -6,6 +6,11 @@ ABOUT
 
 DISA STIG Scripts to harden a system to the RHEL 6 STIG.
 
+This script is currently being used for bare metal systems
+see https://people.redhat.com/fcaviggi/stig-fix for the 
+associated kickstart. Work is being done to merge in AWS,
+Puppet, and Chef content.
+
 These scripts will harden a system to specifications that
 are based upon the the following hardening and specifications
 provided by the following projects:
@@ -193,3 +198,5 @@ PROJECT WORK
 - Add updates to with new security features in RHEL 6.5 and newer
 
 - RPM re-package after system configuration checkpoint
+
+- Merge in work for AWS, Puppet, Chef
