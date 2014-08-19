@@ -182,8 +182,19 @@ HOWTO
      
           # ./checkpoint.sh
           
-     (In progress - working on a method to re-package script changes into a custom RPM for 
-     validation and to distribute configurations to other systems)
+     Created the ability to make an RPM from the configuration using the following commands as root:
+     
+     A.) Install Requirements:
+     
+          # yum install rpmbuild make autoconf
+   
+     B.) Create RPM
+     
+          # make rpm
+     
+     C.) Clean up
+     
+          # make clean
 
 PROJECT WORK
 ============
@@ -196,7 +207,5 @@ PROJECT WORK
 - Help verify the configurations against SSG OpenSCAP Content
 
 - Add updates to with new security features in RHEL 6.5 and newer
-
-- RPM re-package after system configuration checkpoint
 
 - Merge in work for AWS, Puppet, Chef
