@@ -47,3 +47,5 @@
 - Moved TCP_WRAPPERS configuration into 'config' directory, deleted cat2/gen006620.sh
 - Added the ability to checkpoint configuration with checkpoint.sh script, aliased to /sbin/stig-fix-checkpoint
 - Checkpoint prevents apply.sh from placing default configurations over a configured system
+* Wed Aug 20 2014 - fcaviggi (at) redhat.com
+- Added the ability to create RPM
