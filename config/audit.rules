@@ -19,7 +19,7 @@
 # Watch syslog configuration
 -w /etc/syslog.conf
 
-# Watch PAM and athentication configuration
+# Watch PAM and authentication configuration
 -w /etc/pam.d/
 -w /etc/nsswitch.conf
 
@@ -198,7 +198,7 @@
 -a always,exit -F arch=b32 -S mount -F auid>=500 -F auid!=4294967295 -k export
 -a always,exit -F arch=b64 -S mount -F auid>=500 -F auid!=4294967295 -k export
 
-#2.6.2.4.11 Ensure auditd Collects Files Deletion Events by User (successful and unsuc-cessful)
+#2.6.2.4.11 Ensure auditd Collects Files Deletion Events by User (successful and unsuccessful)
 -a always,exit -F arch=b32 -S unlink -S rmdir -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
 -a always,exit -F arch=b64 -S unlink -S rmdir -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
 
