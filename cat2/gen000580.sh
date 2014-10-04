@@ -7,6 +7,6 @@
 echo '==================================================='
 echo ' Patching GEN000580: Set minimum Password length.'
 echo '==================================================='
-if [ $(/bin/grep PASS_MIN_LEN /etc/login.defs | tail -1 | awk '{ print $2 }') -gte 12 ]; then
+if [ $(/bin/grep PASS_MIN_LEN /etc/login.defs | tail -1 | awk '{ print $2 }') -ge 12 ]; then
 	sed -i "s/PASS_MIN_LEN[ \t]*[0-9]*/PASS_MIN_LEN\t12/" /etc/login.defs
 fi
