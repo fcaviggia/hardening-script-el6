@@ -13,4 +13,5 @@ echo '==================================================='
 #  - config/gnome-screensaver /etc/pam.d/gnome-screensaver
 
 # auth config overwrites these changes, make it non executable
-chmod ugo-x /usr/sbin/authconfig
+chmod a-x /usr/sbin/authconfig
+chmod a-x /usr/share/authconfig.py
