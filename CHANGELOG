@@ -49,3 +49,6 @@
 - Checkpoint prevents apply.sh from placing default configurations over a configured system
 * Wed Aug 20 2014 - fcaviggi (at) redhat.com
 - Added the ability to create RPM
+* Sun Oct 12 2014 - fcaviggi (at) redhat.com
+- Various fixes to scripts (password length cat2/GEN000580.sh)
+- Fixed typo in etc/krb5.conf file
