@@ -204,7 +204,7 @@ if [ ! -f "$BACKUP/gnome-screensaver.orig" ]; then
 	cp /etc/pam.d/gnome-screensaver $BACKUP/gnome-screensaver.orig
 fi
 
-if [ ! -f "$BACKUP/system-auth.pam.orig" ]; then
+if [ ! -f "$BACKUP/password-auth.pam.orig" ]; then
 	cp /etc/pam.d/password-auth $BACKUP/pasword-auth.pam.orig
 fi
 
