@@ -10,6 +10,9 @@
 #|    1.0   |   Initial Script      | Vincent C. Passaro | 20-oct-2011|
 #|	    |   Creation	    |                    |            |
 #|__________|_______________________|____________________|____________|
+# Edited by Luke "Brisk-OH" Brisk-OH
+# luke.brisk@boeing.com or luke.brisk@gmail.com 
+# Not a part of the RHEL STIG - 10-27-2014 
 #######################DISA INFORMATION###############################
 #Group ID (Vulid): V-22501
 #Group Title: GEN006235
@@ -32,22 +35,22 @@
 #######################DISA INFORMATION###############################
 
 #Global Variables#
-PDI=GEN006235
+# PDI=GEN006235
 
-if [ -e /etc/samba/smb.conf ]; then
-	echo '==================================================='
-	echo ' Patching GEN006235: Disable guest access in Samba'
-	echo '==================================================='
+# if [ -e /etc/samba/smb.conf ]; then
+	# echo '==================================================='
+	# echo ' Patching GEN006235: Disable guest access in Samba'
+	# echo '==================================================='
 
-	GUESTOK=$( grep -i 'guest ok' /etc/samba/smb.conf| grep -i yes | grep -v "^;" | grep -v "^#" | wc -l )
-	GUESTOk2=$( grep -i 'guest ok' /etc/samba/smb.conf| grep -i no | grep -v "^;" | grep -v "^#" | wc -l )
+	# GUESTOK=$( grep -i 'guest ok' /etc/samba/smb.conf| grep -i yes | grep -v "^;" | grep -v "^#" | wc -l )
+	# GUESTOk2=$( grep -i 'guest ok' /etc/samba/smb.conf| grep -i no | grep -v "^;" | grep -v "^#" | wc -l )
 	#Start-Lockdown
-	if [ $GUESTOK -eq 1 ]; then
-		sed -i 's/[[:blank:]]*guest[[:blank:]]ok[[:blank:]]*=[[:blank:]]*yes/        guest ok = no/g' /etc/samba/smb.conf
-	fi
+	# if [ $GUESTOK -eq 1 ]; then
+		# sed -i 's/[[:blank:]]*guest[[:blank:]]ok[[:blank:]]*=[[:blank:]]*yes/        guest ok = no/g' /etc/samba/smb.conf
+	# fi
 
-	if [ $GUESTOk2 -eq 0 ]; then
-		echo "#Added for DISA GEN006235" >> /etc/samba/smb.conf
-		echo "        guest ok = no" >> /etc/samba/smb.conf
-	fi
-fi
+	# if [ $GUESTOk2 -eq 0 ]; then
+		# echo "#Added for DISA GEN006235" >> /etc/samba/smb.conf
+		# echo "        guest ok = no" >> /etc/samba/smb.conf
+	# fi
+# fi
