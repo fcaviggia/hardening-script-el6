@@ -17,6 +17,12 @@ setfacl --remove-all /etc/sysctl.conf
 ## Turn on auditing in Kernel
 /sbin/grubby --update-kernel=ALL --args="audit=1"
 
+## Fix Audit Permissions
+chmod 600 /etc/audit/audit*
+
+## Make SELinux configuration settings immutable
+chattr +i /etc/selinux/config
+
 #####  rsyslog (NIST 800-53: CCE-18095-0, CCE-18240-2, CCE-17857-4)
 chmod 600 /etc/rsyslog.conf
 chown root:root /etc/rsyslog.conf
