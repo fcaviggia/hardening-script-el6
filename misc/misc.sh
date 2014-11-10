@@ -18,7 +18,13 @@ setfacl --remove-all /etc/sysctl.conf
 /sbin/grubby --update-kernel=ALL --args="audit=1"
 
 ## Fix Audit Permissions
-chmod 600 /etc/audit/audit*
+chmod -R 0600 /etc/audit/*
+chmod -R -w /etc/audit/*
+chmod 0700 /etc/audit
+
+## Fix Missing File Ownership
+find / -nouser -print | xargs chown root
+find / -nogroup -print | xargs chown :root
 
 ## Make SELinux configuration settings immutable
 chattr +i /etc/selinux/config
