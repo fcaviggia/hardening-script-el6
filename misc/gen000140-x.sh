@@ -17,7 +17,7 @@ if [ $? -eq 0 ]; then
 	if [ -a "/var/spool/cron/root" ]; then
 		grep -q aide /var/spool/cron/root 2>/dev/null
 		if [ $? -ne 0 ]; then
-			echo "0 0 * * 0		/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT.txt 2>&1" >> /var/spool/cron/root
+			echo '0 0 * * 0		/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /var/spool/cron/root
 		fi
 	else
 		if [ ! -d /var/log/aide/reports ]; then
@@ -27,7 +27,7 @@ if [ $? -eq 0 ]; then
 		fi
 		
 		echo "# Configured to meet GEN000140-x" > /var/spool/cron/root
-		echo "0 0 * * 0     /usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT.txt 2>&1" >> /var/spool/cron/root
+		echo '0 0 * * 0     /usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /var/spool/cron/root
 		chmod 600 /var/spool/cron/root
 	fi
     fi
