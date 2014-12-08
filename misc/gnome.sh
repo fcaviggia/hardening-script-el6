@@ -137,5 +137,10 @@ EOF
               --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory \
               --type string \
               --set /apps/gnome-screensaver/mode blank-only
-              
+
+	# Disable Ctrl-Alt-Del in GNOME
+	gconftool-2 --direct \
+	      --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory \
+	      --type string \
+	      --set /apps/gnome_settings_daemon/keybindings/power ""
 fi
