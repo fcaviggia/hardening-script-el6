@@ -17,18 +17,12 @@
 
 
 #######################DISA INFORMATION###############################
-#Group ID (Vulid): V-22507
-#Group Title: GEN006570
-#Rule ID: SV-26858r1_rule
-#Severity: CAT III
-#Rule Version (STIG-ID): GEN006570
 #Rule Title: The file integrity tool must be configured to verify ACLs.
 #
 #Vulnerability Discussion: ACLs can provide permissions beyond those 
 #permitted through the file mode and must be verified by file integrity tools.
 #
 #Responsibility: System Administrator
-#IAControls: ECAT-1
 #
 #Check Content: 
 #If using AIDE, check that the configuration contains the "acl" option for all monitored files and directories.
@@ -49,7 +43,7 @@
 #######################DISA INFORMATION###############################
 
 #Global Variables#
-PDI=GEN006570
+PDI=aide_verify_ACLs
 
 #Start-Lockdown
 
@@ -63,7 +57,7 @@ PDI=GEN006570
 # to get a list of used check groups.
 if [ -e /etc/aide.conf ]; then
 	echo '==================================================='
-	echo ' Patching GEN006570: AIDE Configuration for ACLs '
+	echo ' Remediation: AIDE Configuration for ACLs '
 	echo '==================================================='
 
 	for GROUP in `awk '/^\//{print $2}' /etc/aide.conf | sort | uniq`; do
