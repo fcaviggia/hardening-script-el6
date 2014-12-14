@@ -17,18 +17,9 @@
 # support for lib64 dirs.
 								     
 
-#######################DISA INFORMATION###############################
-#Group ID (Vulid): V-22317
-#Group Title: GEN001310
-#Rule ID: SV-26375r1_rule
-#Severity: CAT II
-#Rule Version (STIG-ID): GEN001310
-#Rule Title: All library files must not have extended ACLs.
-#
 #Vulnerability Discussion: Unauthorized access could destroy the integrity of the library files.
 #
 #Responsibility: System Administrator
-#IAControls: ECLP-1
 #
 #Check Content: 
 #Check that system libraries have no extended ACLs.
@@ -37,14 +28,13 @@
 #
 #Fix Text: Remove the extended ACL from the file.
 # setfacl --remove-all /usr/lib/* /lib/*   
-#######################DISA INFORMATION###############################
 
 echo '==================================================='
-echo ' Patching GEN001310: Remove ACLs from Library Files'
+echo ' Remediation: Remove ACLs from Library Files'
 echo '==================================================='
 
 #Global Variables#
-PDI=GEN001310
+PDI=library_files_remove_ACLs
 
 #Start-Lockdown
 for LIBDIR in /usr/lib /usr/lib64 /lib /lib64; do
