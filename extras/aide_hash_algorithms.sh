@@ -16,18 +16,11 @@
 # on 16-Feb-2012 to move check from dev to prod and add fix.
 
 
-#######################DISA INFORMATION###############################
-#Group ID (Vulid): V-22509
-#Group Title: GEN006575
-#Rule ID: SV-26861r1_rule
-#Severity: CAT III
-#Rule Version (STIG-ID): GEN006575
 #Rule Title: The file integrity tool must use FIPS 140-2 approved cryptographic hashes for validating file contents.
 #
 #Vulnerability Discussion: File integrity tools often use cryptographic hashes for verifying that file contents have not been altered. These hashes must be FIPS 140-2 approved.
 #
 #Responsibility: System Administrator
-#IAControls: ECSC-1
 #
 #Check Content: 
 #If using AIDE, check that the configuration contains the "sha256" or "sha512" options for all monitored files and directories.
@@ -46,10 +39,9 @@
 #Fix Text: If using AIDE, edit the configuration and add the "sha512" option for all monitored files and directories.
 #
 #If using a different file integrity tool, configure FIPS 140-2 approved cryptographic hashes per the tool's documentation.   
-#######################DISA INFORMATION###############################
 
 #Global Variables#
-PDI=GEN006575
+PDI=aide_hash_algorithms
 
 #Start-Lockdown
 
@@ -57,7 +49,7 @@ PDI=GEN006575
 # to get a list of used check groups.
 if [ -e /etc/aide.conf ]; then
 	echo '==================================================='
-	echo ' Patching GEN006575: AIDE Configuration for FIPS'
+	echo ' Remediation: AIDE Configuration for FIPS'
 	echo '==================================================='
 	for GROUP in `awk '/^\//{print $2}' /etc/aide.conf | sort | uniq`; do
 		CONFLINE=`awk "/^${GROUP}/{print \\$3}" /etc/aide.conf`
@@ -84,6 +76,3 @@ if [ -e /etc/aide.conf ]; then
 		sed -i -e 's/\+\++/+/g' /etc/aide.conf
 	done
 fi
-
-
-
