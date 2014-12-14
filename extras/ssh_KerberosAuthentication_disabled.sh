@@ -16,12 +16,6 @@
 # on 06-Feb-2012 to only run fix when needed.
 
 
-#######################DISA INFORMATION###############################
-#Group ID (Vulid): V-22475
-#Group Title: GEN005526
-#Rule ID: SV-26768r1_rule
-#Severity: CAT III
-#Rule Version (STIG-ID): GEN005526
 #Rule Title: The SSH daemon must not permit Kerberos authentication unless needed.
 #
 #Vulnerability Discussion: Kerberos authentication for SSH is often implemented using GSSAPI. 
@@ -32,7 +26,6 @@
 #
 #
 #Responsibility: System Administrator
-#IAControls: ECSC-1
 #
 #Check Content: 
 #Ask the SA if Kerberos authentication is used by the system. If it is, this is not applicable.
@@ -42,10 +35,9 @@
 #If no lines are returned, or the setting is set to "yes", this is a finding.
 #
 #Fix Text: Edit the SSH daemon configuration and set (add if necessary) an "KerberosAuthentication" directive set to "no".   
-#######################DISA INFORMATION###############################
 
 #Global Variables#
-PDI=GEN005526
+PDI=ssh_KerberosAuthentication_disabled
 
 #Start-Lockdown
 if [ `grep -c "^KerberosAuthentication" /etc/ssh/sshd_config` -gt 0 ]; then
@@ -55,7 +47,6 @@ if [ `grep -c "^KerberosAuthentication" /etc/ssh/sshd_config` -gt 0 ]; then
 		service sshd restart &>/dev/null
 	fi
 else
-	echo "#Added for DISA $PDI" >> /etc/ssh/sshd_config
 	echo "KerberosAuthentication no" >> /etc/ssh/sshd_config
 	service sshd restart &>/dev/null
 fi
