@@ -16,12 +16,6 @@
 # on 06-Feb-2012 to only run fix when needed.
 
 
-#######################DISA INFORMATION###############################
-#Group ID (Vulid): V-22473
-#Group Title: GEN005524
-#Rule ID: SV-26766r1_rule
-#Severity: CAT III
-#Rule Version (STIG-ID): GEN005524
 #Rule Title: The SSH daemon must not permit GSSAPI authentication unless needed.
 #
 #Vulnerability Discussion: GSSAPI authentication is used to provide additional authentication mechanisms to applications. 
@@ -29,7 +23,6 @@
 #the system. GSSAPI authentication must be disabled unless needed.
 #
 #Responsibility: System Administrator
-#IAControls: ECSC-1
 #
 #Check Content: 
 #Ask the SA if GSSAPI authentication is used for SSH authentication to the system. If so, this is not applicable.
@@ -39,14 +32,13 @@
 #If no lines are returned, or the setting is set to "yes", this is a finding.
 #
 #Fix Text: Edit the SSH daemon configuration and set (add if necessary) a "GSSAPIAuthentication" directive set to "no".   
-#######################DISA INFORMATION###############################
 
 echo '==================================================='
-echo ' Patching GEN005524: Disable GSSAPIAuth in SSHD'
+echo ' Remediation: Disable GSSAPIAuth in SSHD'
 echo '==================================================='
 
 #Global Variables#
-PDI=GEN005524
+PDI=ssh_disable_GSSAPIAuth
 
 #Start-Lockdown
 if [ `grep -c "^GSSAPIAuthentication" /etc/ssh/sshd_config` -gt 0 ]; then
@@ -56,7 +48,6 @@ if [ `grep -c "^GSSAPIAuthentication" /etc/ssh/sshd_config` -gt 0 ]; then
 		service sshd restart &>/dev/null 
   	fi
 else
-	echo "#Adding for DISA $PDI" >> /etc/ssh/sshd_config
 	echo "GSSAPIAuthentication no" >> /etc/ssh/sshd_config
 	service sshd restarat &>/dev/null
 fi
