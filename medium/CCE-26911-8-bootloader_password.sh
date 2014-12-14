@@ -1,9 +1,7 @@
 #!/bin/sh
 
-## (LNX00140: CAT I) (Previously – L072) The SA will configure the GRUB Console Boot
-## Loader with a MD5 encrypted password.
 echo '==================================================='
-echo ' Checking LNX00140: GRUB Password'
+echo ' Checking CCE-26911-8: GRUB Password'
 echo '==================================================='
 `/bin/grep password /boot/grub/grub.conf | /bin/grep -q encrypted`
 if [ $? -gt 0 ]; then
