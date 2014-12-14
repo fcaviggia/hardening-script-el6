@@ -16,12 +16,6 @@
 # on 06-Feb-2012 to only run fix when needed.
 
 
-#######################DISA INFORMATION###############################
-#Group ID (Vulid): V-22474
-#Group Title: GEN005525
-#Rule ID: SV-26767r1_rule
-#Severity: CAT III
-#Rule Version (STIG-ID): GEN005525
 #Rule Title: The SSH client must not permit GSSAPI authentication unless needed.
 #
 #Vulnerability Discussion: GSSAPI authentication is used to provide additional authentication mechanisms to applications. 
@@ -29,7 +23,6 @@
 #GSSAPI authentication must be disabled unless needed.
 #
 #Responsibility: System Administrator
-#IAControls: ECSC-1
 #
 #Check Content: 
 #Check the SSH clients configuration for the GSSAPIAuthentication setting.
@@ -37,10 +30,9 @@
 #If no lines are returned, or the setting is set to "yes", this is a finding.
 #
 #Fix Text: Edit the SSH client configuration and set (add if necessary) an "GSSAPIAuthentication" directive set to "no".   
-#######################DISA INFORMATION###############################
 
 echo '==================================================='
-echo ' Patching GEN005525: Disable GSSAPIAuth in SSH'
+echo ' Remediating: Disable GSSAPIAuth in SSH'
 echo '==================================================='
 
 #Global Variables#
