@@ -76,6 +76,22 @@ fi
 chmod 0440 /etc/sudoers
 chown root:root /etc/sudoers
 
+##### Micelleneous Permission Fixes
+chmod 0400 /etc/at.allow
+chmod 0400 /etc/cron.allow
+chmod 0400 /etc/crontab
+chmod 0444 /etc/bashrc
+chmod 0444 /etc/csh.cshrc
+chmod 0444 /etc/csh.long
+chmod 0600 /etc/ftpusers
+chmod 0444 /etc/hosts
+chmod 0444 /etc/networks
+chmod 0400 /etc/securetty
+chmod 0444 /etc/services
+chmod 0444 /etc/shells
+chmod 0600 /var/log/dmesg
+
+
 ##### VLOCK ALIAS
 cat <<EOF > /etc/profile.d/vlock-alias.sh
 #!/bin/sh
