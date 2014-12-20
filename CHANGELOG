@@ -55,3 +55,5 @@
 * Fri Dec 19 2014 - fcaviggi (at) redhat.com
 - Merged SCAP Security Guide (SSG) Scripts - Thanks to Shawn Wells
 - Updated directory structure for hardening scripts
+* Sat Dec 20 2014 - fcaviggi (at) redhat.com
+- Added misc/ctrlaltdel.sh
