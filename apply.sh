@@ -352,73 +352,9 @@ else
 	fi
 fi
 
-# CAT I SECURITY ISSUES
-if [ -z "$QUIET" ]; then
-	echo
-	echo -e "\033[1mCAT I Security Issues\033[0m"
-	echo
-fi
+# SECURITY ISSUES
 echo >> $LOG
-echo "CAT I Security Issues" >> $LOG
-echo >> $LOG
-for i in `ls cat1/*.sh`; do 
-	if [ -z "$QUIET" ]; then
-		echo  "#### Executing Script: $i" | tee -a $LOG
-		sh $i 2>&1 | tee -a $LOG
-	else
-		echo "#### Executing Script: $i" >> $LOG
-		sh $i >> $LOG
-	fi
-done;
-
-# CAT II SECURITY ISSUES
-if [ -z "$QUIET" ]; then
-	echo
-	echo -e "\033[1mCAT II Security Issues\033[0m"
-	echo
-fi
-echo >> $LOG
-echo "CAT II Security Issues" >> $LOG
-echo >> $LOG
-for i in `ls cat2/*.sh`; do 
-	if [ -z "$QUIET" ]; then
-		echo  "#### Executing Script: $i" | tee -a $LOG
-		sh $i 2>&1 | tee -a $LOG
-	else
-		echo "#### Executing Script: $i" >> $LOG
-		sh $i >> $LOG
-	fi
-done;
-
-# CAT III SECURITY ISSUES
-if [ -z "$QUIET" ]; then
-	echo
-	echo -e "\033[1mCAT III Security Issues\033[0m"
-	echo
-fi
-echo >> $LOG
-echo "CAT III Security Issues" >> $LOG
-echo >> $LOG
-for i in `ls cat3/*.sh`; do 
-	if [ -z "$QUIET" ]; then
-		echo  "#### Executing Script: $i" | tee -a $LOG
-		sh $i 2>&1 | tee -a $LOG
-	else
-		echo "#### Executing Script: $i" >> $LOG
-		sh $i >> $LOG
-	fi
-done;
-
-# CAT IV SECURITY ISSUES
-if [ -z "$QUIET" ]; then
-	echo
-	echo -e "\033[1mCAT IV Security Issues\033[0m"
-	echo
-fi
-echo >> $LOG
-echo "CAT IV Security Issues" >> $LOG
-echo >> $LOG
-for i in `ls cat4/*.sh`; do 
+for i in `ls scripts/*.sh`; do 
 	if [ -z "$QUIET" ]; then
 		echo  "#### Executing Script: $i" | tee -a $LOG
 		sh $i 2>&1 | tee -a $LOG
