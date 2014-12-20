@@ -287,17 +287,14 @@ cp -f ./config/smb.conf /etc/samba/smb.conf
 #### AUDITING RULES
 cp -f ./config/auditd.conf /etc/audit/auditd.conf
 if [ "$ARCH" == "x86_64" ]; then
-	if [ -d /etc/audit/rules.d ]; then
-		cp -f ./config/audit.rules /etc/audit/rules.d/audit.rules	
-	else
-		cp -f ./config/audit.rules /etc/audit/audit.rules
-	fi
+	cp -f ./config/audit.rules /etc/audit/audit.rules
 else
-	if [ -d /etc/audit/rules.d ]; then
-		grep -v 'b64' ./config/audit.rules > /etc/audit/rules.d/audit.rules
-	else
-		grep -v 'b64' ./config/audit.rules > /etc/audit/audit.rules
-	fi
+	grep -v 'b64' ./config/audit.rules > /etc/audit/rules.d/audit.rules
+fi
+
+# Remove RHEL 6.6 /etc/audit/rules.d directory
+if [ -d /etc/audit/rules.d ]; then
+	rm -rf /etc/audit/rules.d
 fi
 
 #### FIREWALL CONFIGURATIONS (IPV4/IPV6)
