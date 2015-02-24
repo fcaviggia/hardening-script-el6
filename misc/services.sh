@@ -36,12 +36,12 @@ done
 `grep NETWORKING_IPV6 /etc/sysconfig/network | grep -q yes`
 if [ $? -eq 0 ]; then
 	echo "Enabling ip6tables Service."
-	/sbin/chkconfig $SRV on &> /dev/null
-	/sbin/service $SRV start &> /dev/null
+	/sbin/chkconfig ip6tables on &> /dev/null
+	/sbin/service ip6tables start &> /dev/null
 else
 	echo "Disabling ip6tables Service."
-	/sbin/chkconfig $SRV off &> /dev/null
-	/sbin/service $SRV stop &> /dev/null
+	/sbin/chkconfig ip6tables off &> /dev/null
+	/sbin/service ip6tables stop &> /dev/null
 fi
 
 ### Unsure
