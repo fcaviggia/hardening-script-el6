@@ -55,8 +55,6 @@ apply_configuration() {
 		cp $BASE_BACKUP/usb-storage.ko.$KERNEL $KERNEL_MODULE
 	fi
 
-
-	/sbin/grubby --update-kernel=ALL --remove-args="nousb"
 	if [ -f $BLACKLIST ]; then
 		grep -q usb-storage $BLACKLIST 
 		if [ $? -eq 0 ]; then
@@ -77,7 +75,6 @@ remove_configuration() {
 	if [ -f $BLACKLIST ]; then
 		grep -q usb-storage $BLACKLIST
 		if [ $? -eq 0 ]; then
-			/sbin/grubby --update-kernel=ALL --args="nousb"
 			sed -i '/^#install usb-storage \/bin\/false/ c\install usb-storage \/bin\/false' $BLACKLIST
 			/sbin/lsmod | grep -q usb_storage
 			if [ $? -eq 0 ]; then
