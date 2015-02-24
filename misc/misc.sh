@@ -100,7 +100,7 @@ EOF
 
 cat <<EOF > /etc/profile.d/vlock-alias.csh
 #!/bin/csh
-alas vlock 'clear;vlock -a'
+alias vlock 'clear;vlock -a'
 EOF
 
 chown root:root /etc/profile.d/vlock-alias.sh
