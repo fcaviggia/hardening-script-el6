@@ -38,12 +38,12 @@
 PDI=GEN005507
 
 #Start-Lockdown
-grep -q "MACs hmac-sha1" /etc/ssh/sshd_config 2>/dev/null
+grep -q "hmac-sha" /etc/ssh/sshd_config 2>/dev/null
 if [ $? -ne 0 ]; then
 	echo '==================================================='
 	echo ' Patching GEN005507: Add MACs hmac-sha1 to SSHD'
 	echo '==================================================='
 	echo " " >> /etc/ssh/sshd_config
-	echo "# For compliance of GEN005507 (FIPS 140-2)" >> /etc/ssh/sshd_config
-	echo "MACs hmac-sha1" >> /etc/ssh/sshd_config
+	echo "# Compliance of FIPS 140-2" >> /etc/ssh/sshd_config
+	echo "MACs hmac-sha2-512 hmac-sha2-256" >> /etc/ssh/sshd_config
 fi
