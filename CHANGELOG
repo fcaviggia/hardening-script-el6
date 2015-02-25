@@ -60,3 +60,5 @@
 * Wed Feb 25 2015 - fcaviggi (at) redhat.com
 - STIG Hardening Scripts Baselined against SSG
 - Various Fixes and Updates to scripts
+* Wed Feb 25 2015 - fcaviggi (at) redhat.com
+- Remove clock temperature and weather from GNOME clock
