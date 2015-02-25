@@ -40,7 +40,7 @@ apply_configuration() {
 	grep udf $BLACKLIST | grep -q "#"
 	if [ $? -ne 0 ]; then
 		echo -n "Enable udf (DVD) filesystem... "
-		sed -i '/^install udf \/bin\/false/ c\#install udf \/bin\/flase' $BLACKLIST
+		sed -i '/^install udf \/bin\/false/ c\#install udf \/bin\/false' $BLACKLIST
 		logger "Enabled UDF/DVD Support (stig-fix)"
 		echo "Done."
 	else
