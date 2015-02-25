@@ -57,3 +57,6 @@
 - Updated directory structure for hardening scripts
 * Sat Dec 20 2014 - fcaviggi (at) redhat.com
 - Added misc/ctrlaltdel.sh
+* Wed Feb 25 2015 - fcaviggi (at) redhat.com
+- STIG Hardening Scripts Baselined against SSG
+- Various Fixes and Updates to scripts
