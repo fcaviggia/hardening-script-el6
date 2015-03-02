@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Script: toggle_ipv6 (part of stig-fix)
+# Script: toggle_ipv6 (part of system-hardening)
 # Description: RHEL 6 Hardening Script to enbale or disable a device
 # License: GPL (see COPYING)
 # Copyright: Red Hat Consulting, May 2014
@@ -70,7 +70,7 @@ apply_configuration() {
 		  service ip6tables restart &>/dev/null
 		  chkconfig ip6tables on &>/dev/null
 
-		  logger "Enabled IPv6 Support (stig-fix)"
+		  logger "Enabled IPv6 Support (system-hardening)"
 		  echo "Done."
     else
 		  echo -n "Disable IPv6... "
@@ -104,7 +104,7 @@ apply_configuration() {
 		  service ip6tables stop &>/dev/null
 		  chkconfig ip6tables off &>/dev/null
 
-		  logger "Disabled IPv6 Support (stig-fix)"
+		  logger "Disabled IPv6 Support (system-hardening)"
 		  echo "Done."
     fi
 }

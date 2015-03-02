@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Script: toggle_usb (part of stig-fix)
+# Script: toggle_usb (part of system-hardening)
 # Description: RHEL 6 Hardening Script to enbale or disable a device
 # License: GPL (see COPYING)
 # Copyright: Red Hat Consulting, Sep 2013
@@ -39,7 +39,7 @@ EOF
 apply_configuration() {
 	echo -n "Remove 'nousb' Kernel Arguement ... "
 	/sbin/grubby --update-kernel=ALL --remove-args="nousb"
-	/usr/bin/logger -p security.info "Disabled 'nousb' Kernel Argument (stig-fix)"
+	/usr/bin/logger -p security.info "Disabled 'nousb' Kernel Argument (system-hardening)"
 	echo "Done."
 
 }
@@ -47,7 +47,7 @@ apply_configuration() {
 remove_configuration() {
 	echo -n "Enable 'nousb' Kernel Arguement ... "
 	/sbin/grubby --update-kernel=ALL --args="nousb"
-	/usr/bin/logger -p security.info "Enabled 'nousb' Kernel Argument (stig-fix)"
+	/usr/bin/logger -p security.info "Enabled 'nousb' Kernel Argument (system-hardening)"
 	echo "Done."
 }
 

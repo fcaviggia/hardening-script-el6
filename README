@@ -8,7 +8,7 @@ These hardening scripts will provide system security that
 is based upon several government standards.
 
 This script is currently being used for bare metal systems
-see https://people.redhat.com/fcaviggi/stig-fix for the 
+see https://people.redhat.com/fcaviggi/system-hardening for the 
 associated kickstart. Work is being done to merge in AWS,
 Puppet, and Chef content.
 
@@ -34,7 +34,7 @@ provided by the following projects:
 CONTENT
 =======
 
-Scripts are designed to run out of /opt/stig-fix/ on a preferably fresh
+Scripts are designed to run out of /opt/system-hardening/ on a preferably fresh
 installation of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable 
 inactive users.)
 
@@ -51,7 +51,7 @@ misc - NSA SNAC, GNOME, and Other miscellenous lockdown scripts
 manual - Manaully run (There be dragons here)
 backups - Backup copy of modified files to compare and restore configurations
 
-Run is logged in /var/log/stig-fix-YYYY-MM-DD.log
+Run is logged in /var/log/system-hardening-YYYY-MM-DD.log
 
 HOWTO
 =====
@@ -123,8 +123,8 @@ HOWTO
 
                                    # mkisofs -RJ -o repo-export.iso <directory>
 
- 7. Include the stig-fix scirpts in the Kickstart and run the configuration '/sbin/stig-fix -q &> /dev/null' in 
-    the %post section  -OR- install the RPM afterwards and run manually (/sbin/stig-fix)
+ 7. Include the system-hardening scirpts in the Kickstart and run the configuration '/sbin/system-hardening -q &> /dev/null' in 
+    the %post section  -OR- install the RPM afterwards and run manually (/sbin/system-hardening)
 
  8. Configure NTP (/etc/ntp.conf) for the local time sources (or military ones) that are approved
 
@@ -132,7 +132,7 @@ HOWTO
 
 10. Add users with root access to the 'wheel' group, for users with ssh access add them to the 'sshusers' group.
 
-11. Review the manual scripts in (/opt/stig-fix/manual) - putting the kernel in FIPS 140-2 mode can cause 
+11. Review the manual scripts in (/opt/system-hardening/manual) - putting the kernel in FIPS 140-2 mode can cause 
     various weaker authentication not to work (e.g. RHN Satellite is still using md5)
 
 12. The following scripts have been included for convenience (RPM Symbolic Links to scripts):
@@ -146,7 +146,7 @@ HOWTO
   
           Edit the iptables, ip6tables, hosts.allow, and hosts.deny as requried, copy any changes back to 
           the ./config/ directory for iptables/ip6tables and modify cat2/gen006620.sh (TCP_WRAPPERS) to 
-          ensure changes are applied if the stig-fix command is run again.
+          ensure changes are applied if the system-hardening command is run again.
 
 14. Install site approved monitoring tools and virus scan. Examples include, but are not limited to, 
     the following:

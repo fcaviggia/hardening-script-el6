@@ -16,13 +16,12 @@ if [ $? -eq 0 ]; then
 else
 	echo "System is either not registered or not communicating with RHN Satellite."
 	echo
-	echo "Please apply patches manually via DVD Process (see STIG-FIX Documentation)"
+	echo "Please apply patches manually via DVD Process (see Hardening Script Documentation)"
 	echo
 	if [ ! -e /etc/yum.repos.d/rhel-dvd.repo ]; then
 		echo "Creating '/etc/yum.repos.d/rhel-dvd.repo' configuration... "
 		cat > /etc/yum.repos.d/rhel-dvd.repo << EOF
-# Created by STIG-FIX Script to help satisfy DISA STIG GEN000300 (CAT II)
-# Apply patches manually via reposync/createrepo process in STIG-FIX Documentation
+# Apply patches manually via reposync/createrepo process in Hardening Script Documentation
 [rhel-dvd]
 name=Red Hat Enterprise Linux $releasever - $basearch - DVD
 baseurl=file:///media/

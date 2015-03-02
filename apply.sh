@@ -4,7 +4,7 @@
 # This script is NOT SUPPORTED by Red Hat Global Support Services.
 # Please contact Josh Waldman for more information.
 #
-# Script: apply.sh (stig-fix)
+# Script: apply.sh (system-hardening)
 # Description: RHEL 6 Hardening Script (Master Script)
 # License: GPL (see COPYING)
 # Copyright: Red Hat Consulting, Sep 2013
@@ -27,7 +27,7 @@ VERSION='1.1'
 BASE_DIR=`dirname $(realpath $0)`
 BACKUP=$BASE_DIR/backups
 CONFIG=$BASE_DIR/config
-LOG=/var/log/stig-fix-$DATE.log
+LOG=/var/log/system-hardening-$DATE.log
 
 # Script Version
 function version() {

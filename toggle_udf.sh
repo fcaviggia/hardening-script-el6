@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Script: toggle_udf (part of stig-fix)
+# Script: toggle_udf (part of system-hardening)
 # Description: RHEL 6 Hardening Script to enbale or disable a device
 # License: GPL (see COPYING)
 # Copyright: Red Hat Consulting, Sep 2013
@@ -41,12 +41,12 @@ apply_configuration() {
 	if [ $? -ne 0 ]; then
 		echo -n "Enable udf (DVD) filesystem... "
 		sed -i '/^install udf \/bin\/false/ c\#install udf \/bin\/false' $BLACKLIST
-		logger "Enabled UDF/DVD Support (stig-fix)"
+		logger "Enabled UDF/DVD Support (system-hardening)"
 		echo "Done."
 	else
 		echo -n "Disable udf (DVD) file system... "
 		sed -i '/^#install udf \/bin\/false/ c\install udf \/bin\/false' $BLACKLIST
-		logger "Disabled UDF/DVD Support (stig-fix)"
+		logger "Disabled UDF/DVD Support (system-hardening)"
 		echo "Done."
 	fi
 }

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Script: checkpoint (part of stig-fix)
+# Script: checkpoint (part of system-hardening)
 # Description: Retain current configuration files in config
 # License: GPL (see COPYING)
 # Copyright: Red Hat Consulting, Sep 2013
@@ -96,7 +96,7 @@ apply_configuration() {
 	cp -f /etc/hosts.allow $BASE_CONFIG/hosts.allow
 	cp -f /etc/hosts.deny $BASE_CONFIG/hosts.deny
 	
-	/usr/bin/logger -p security.info "System Configuraiton Checkpointed (stig-fix)"
+	/usr/bin/logger -p security.info "System Configuraiton Checkpointed (system-hardening)"
 }
 
 # Check for root user
