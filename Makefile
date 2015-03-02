@@ -1,10 +1,10 @@
-# SYSTEM HARDENING MAKEFILE 
+# HARDENING SCRIPT MAKEFILE 
 # Description: Makefile
 # License: GPL (see COPYING)
 # Copyright: Red Hat Consulting, Aug 2014
 # Author: Frank Caviggia <fcaviggi (at) redhat.com>
 
-PKGNAME=system-hardening
+PKGNAME=hardening-script
 VERSION=$(shell awk '/PKG_VERSION/ { print $$3 }' $(PKGNAME).spec)
 RELEASE=$(shell awk '/PKG_RELEASE/ { print $$3 }' $(PKGNAME).spec)
 BDIR=`pwd`
@@ -16,8 +16,8 @@ install:
 	tar xzfp $(PKGNAME)-$(VERSION).tar.gz -C $(INSTROOT)
 
 rpm:   local
-	@mkdir -p /tmp/$(PKGNAME)-$(VERSION)/opt/system-hardening/
-	@cp -a $(BDIR)/* /tmp/$(PKGNAME)-$(VERSION)/opt/system-hardening
+	@mkdir -p /tmp/$(PKGNAME)-$(VERSION)/opt/hardening-script/
+	@cp -a $(BDIR)/* /tmp/$(PKGNAME)-$(VERSION)/opt/hardening-script
 	@cd /tmp/$(PKGNAME)-$(VERSION);tar -czSpf /tmp/$(PKGNAME)-$(VERSION).tar.gz .
 	@mv /tmp/$(PKGNAME)-$(VERSION).tar.gz $(BDIR)
 	@rm -rf /tmp/$(PKGNAME)*
