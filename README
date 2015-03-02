@@ -1,16 +1,8 @@
 hardening-script-el6
-=====================
+====================
 
 ABOUT
 =====
-
-These hardening scripts will provide system security that
-is based upon several government standards.
-
-This script is currently being used for bare metal systems
-see https://people.redhat.com/fcaviggi/system-hardening for the 
-associated kickstart. Work is being done to merge in AWS,
-Puppet, and Chef content.
 
 These scripts will harden a system to specifications that
 are based upon the the following hardening and specifications
@@ -34,13 +26,13 @@ provided by the following projects:
 CONTENT
 =======
 
-Scripts are designed to run out of /opt/system-hardening/ on a preferably fresh
+Scripts are designed to run out of /opt/hardening-script/ on a preferably fresh
 installation of RHEL 6.4+ (RHEL 6.4 updated pam_lastlog.so to disable 
 inactive users.)
 
-apply.sh - master script that runs scripts in cat1-cat4 and misc
+apply.sh - master script (aliased to system-hardening)
 checkpoint.sh - checkpoint the current configuration so re-running apply.sh 
-will not squash changes
+will not squash changes (aliased to system-hardening-checkpoint)
 toggle_ipv6.sh - toggles IPv6 support, requires reboot (default is off)
 toggle_nousb.sh - toggles the 'nousb' kernel flag only
 toggle_udf.sh - toggles 'udf' mounting of DVDs (USGCB Blacklists udf) 
@@ -132,7 +124,7 @@ HOWTO
 
 10. Add users with root access to the 'wheel' group, for users with ssh access add them to the 'sshusers' group.
 
-11. Review the manual scripts in (/opt/system-hardening/manual) - putting the kernel in FIPS 140-2 mode can cause 
+11. Review the manual scripts in (/opt/hardening-script/manual) - putting the kernel in FIPS 140-2 mode can cause 
     various weaker authentication not to work (e.g. RHN Satellite is still using md5)
 
 12. The following scripts have been included for convenience (RPM Symbolic Links to scripts):
