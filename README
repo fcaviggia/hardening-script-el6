@@ -1,10 +1,11 @@
-stig-fix-el6
-============
+hardening-script-el6
+=====================
 
 ABOUT
 =====
 
-DISA STIG Scripts to harden a system to the RHEL 6 STIG.
+These hardening scripts will provide system security that
+is based upon several government standards.
 
 This script is currently being used for bare metal systems
 see https://people.redhat.com/fcaviggi/stig-fix for the 
