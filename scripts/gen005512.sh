@@ -38,9 +38,9 @@ PDI=GEN005512
 grep -q "MACs hmac-sha1" /etc/ssh/ssh_config 2>/dev/null
 if [ $? -ne 0 ]; then
 	echo '==================================================='
-	echo ' Patching GEN005512: Add MACs hmac-sha1 to SSH'
+	echo ' FIPS 140-2 MACs to SSH'
 	echo '==================================================='
 	echo " " >> /etc/ssh/ssh_config
-	echo "# For compliance of GEN005512 (FIPS 140-2)" >> /etc/ssh/ssh_config
-	echo "MACs hmac-sha1" >> /etc/ssh/ssh_config
+	echo "# FIPS 140-2 Requirement" >> /etc/ssh/ssh_config
+	echo "MACs hmac-sha2-512,hmac-sha2-256,hmac-sha1" >> /etc/ssh/ssh_config
 fi
