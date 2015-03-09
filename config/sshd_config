@@ -142,6 +142,6 @@ RhostsRSAAuthentication no
 Compression delayed
 # Added for DISA GEN005526
 KerberosAuthentication no
-# FIPS 140-2 Encryption (Highest Level using Counter Mode)
-Ciphers aes256-ctr,aes192-ctr,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc
-MACs hmac-sha2-512,hmac-sha2-256,hmac-ripemd160,hmac-sha1-96
+# FIPS 140-2 Encryption
+Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
+Macs hmac-sha2-512,hmac-sha2-256,hmac-sha1
