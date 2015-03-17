@@ -8,8 +8,8 @@ auth        sufficient    pam_faillock.so authsucc audit deny=3 even_deny_root r
 auth        requisite     pam_succeed_if.so uid >= 500 quiet
 auth        required      pam_deny.so
 
-account     required      pam_unix.so
 account     required      pam_faillock.so
+account     required      pam_unix.so
 account	    required	    pam_lastlog.so inactive=35
 account     sufficient    pam_localuser.so
 account     sufficient    pam_succeed_if.so uid < 500 quiet
