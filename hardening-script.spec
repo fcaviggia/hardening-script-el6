@@ -10,7 +10,7 @@
 %define DATE		/bin/date +\%s
 %define HDATE		/bin/date -Iminute
 %define SCRIPT_NAME	hardening-script
-%define PKG_VERSION	1.8.3
+%define PKG_VERSION	1.0
 %define PKG_RELEASE	el6
 
 %define BASE_DIR	/opt/%{SCRIPT_NAME}
@@ -209,5 +209,5 @@ fi
 %attr(0700,root,root) %{BASE_BIN}/*
 %attr(0600,root,root) %{BASE_CONFIG}/*
 
-%doc README COPYING AUTHORS CHANGELOG
+%doc README.md COPYING AUTHORS CHANGELOG
 %doc hardening-script.spec
