@@ -6,6 +6,10 @@ echo ' Additional Hardening: Gnome Desktop Settings'
 echo '==================================================='
 
 if [ -x /usr/bin/gconftool-2 ]; then
+
+	# Set the default to Runlevel 3 (No XWindows)
+	sed -i 's/id:5:initdefault:/id:3:initdefault:/' /etc/inittab
+
 	# Remove Red Hat Registration Reminder
 	rm -f /etc/xdg/autostart/rhsm*desktop
 
