@@ -13,7 +13,7 @@ These scripts will harden a system to specifications that
 are based upon the the following hardening and specifications
 provided by the following projects:
 
-* [DISA RHEL 6 STIG V1 R2](http://iase.disa.mil/stigs/os/unix/red_hat.html)
+* [DISA RHEL 6 STIG V1 R2](http://iase.disa.mil/stigs/os/unix-linux/Pages/red-hat.aspx)
 * [NIST 800-53 (USGCB) Content for RHEL 5](http://usgcb.nist.gov/usgcb/rhel_content.html)
 * [NSA SNAC Guide for Red Hat Enterprise Linux 5](http://www.nsa.gov/ia/_files/os/redhat/NSA_RHEL_5_GUIDE_v4.2.pdf)
 * [Aqueduct Project](https://fedorahosted.org/aqueduct)
