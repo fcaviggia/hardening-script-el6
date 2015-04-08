@@ -336,6 +336,7 @@ fi
 rpm -q scrub &>/dev/null
 if [ $? -eq 0 ]; then
 	cp ./config/clean_system /etc/init.d/clean_system
+	chmod +x /etc/init.d/clean_system
 	/sbin/chkconfig --add clean_system
 	/sbin/chkconfig --level 06 clean_system on
 	/sbin/chkconfig --level 12345 clean_system off
