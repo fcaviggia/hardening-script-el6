@@ -12,3 +12,7 @@ cat <<EOF > /etc/init/control-alt-delete.conf
 #start on control-alt-delete
 exec /usr/bin/logger -p security.info "Control-Alt-Delete pressed"
 EOF
+
+cat <<EOF > /etc/init/control-alt-delete.override
+exec /usr/bin/logger -p security.info "Control-Alt-Delete pressed"
+EOF
