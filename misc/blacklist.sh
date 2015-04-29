@@ -17,7 +17,7 @@ echo -e "install bluetooth /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 # DISA GEN007260 - Disable AppleTalk
 echo -e "install appletalk /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf 
 # NSA Recommendation: Disable mounting USB Mass Storage
-echo -e "install usb-storage /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
+echo -e "install usb-storage /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 # Disable mounting of cramfs CCE-14089-7 (row 26)
 echo -e "install cramfs /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 # Disable mounting of freevxfs CCE-14457-6 (row 27)
@@ -33,13 +33,13 @@ echo -e "install squashfs /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 # Disable mounting of udf CCE-14871-8 (row 32)
 echo -e "install udf /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 # CCE-14268-7 (row 130) / DISA GEN007080
-echo -e "install dccp /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
+echo -e "install dccp /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 # CCE-14235-5 (row 131) / DISA GEN007020
-echo -e "install sctp /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
+echo -e "install sctp /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 #i CCE-14027-7 (row 132) / DISA GEN007480
-echo -e "install rds /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
+echo -e "install rds /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 # CCE-14911-2 (row 133) / DISA GEN007540
-echo -e "install tipc /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
+echo -e "install tipc /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 # CCE-14948-4 (row 176)
 echo -e "install net-pf-31 /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
 # DISA GEN007700
