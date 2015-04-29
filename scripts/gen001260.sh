@@ -6,5 +6,5 @@ echo '==================================================='
 echo ' Patching GEN001260: Setting permissions of system'
 echo '                     log files.'
 echo '==================================================='
-find /var/log/ -type f -exec chmod 640 '{}' \;
-sed -i "s/chmod 0664/chmod 0640/" /etc/rc.d/rc.sysinit
+find /var/log/ -type f -exec chmod 600 '{}' \;
+sed -i "s/chmod 0664/chmod 0600/" /etc/rc.d/rc.sysinit
