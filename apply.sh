@@ -91,11 +91,6 @@ while getopts ":vhqs:" OPTION; do
 	esac
 done
 
-
-echo $SKIPSCRIPTS
-exit
-
-
 if [ -z "$QUIET" ]; then
 	echo -e "\033[3m\033[1mRed Hat Enterprise 6 Linux Hardening Scripts\033[0m\033[0m"
 	echo
