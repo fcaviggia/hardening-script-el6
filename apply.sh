@@ -28,6 +28,7 @@ BASE_DIR=`dirname $(realpath $0)`
 BACKUP=$BASE_DIR/backups
 CONFIG=$BASE_DIR/config
 LOG=/var/log/system-hardening-$DATE.log
+SKIPSCRIPTS=""
 
 # Script Version
 function version() {
@@ -42,6 +43,7 @@ usage: $0 [options]
   -v    Show version
   -h 	Show this message
   -q	Quiet output for scripting use
+  -s	Skip designated script; argument can be repeated
 
 Hardening Scripts for RHEL 6 (v.$VERSION)
 
@@ -64,7 +66,7 @@ the following standards:
 EOF
 }
 
-while getopts ":vhq" OPTION; do
+while getopts ":vhqs:" OPTION; do
 	case $OPTION in
 		v)
 			version
@@ -76,6 +78,9 @@ while getopts ":vhq" OPTION; do
 			;;
 		q)
 			QUIET=1
+			;;
+		s) 
+			SKIPSCRIPTS+=$OPTARG" "
 			;;
 		?)
 			echo "ERROR: Invalid Option Provided!"
@@ -353,12 +358,18 @@ fi
 # SECURITY ISSUES
 echo >> $LOG
 for i in `ls scripts/*.sh`; do 
-	if [ -z "$QUIET" ]; then
-		echo  "#### Executing Script: $i" | tee -a $LOG
-		sh $i 2>&1 | tee -a $LOG
-	else
-		echo "#### Executing Script: $i" >> $LOG
-		sh $i >> $LOG
+	echo $SKIPSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
+
+	if [ $? -ne 0 ]; then
+		if [ -z "$QUIET" ]; then
+			echo  "#### Executing Script: $i" | tee -a $LOG
+			sh $i 2>&1 | tee -a $LOG
+		else
+			echo "#### Executing Script: $i" >> $LOG
+			sh $i >> $LOG
+		fi
+	else 
+		echo skipping $i per user request
 	fi
 done;
 
@@ -372,12 +383,18 @@ echo >> $LOG
 echo "Additional Hardening Scripts" >> $LOG
 echo >> $LOG
 for i in `ls misc/*.sh`; do
-	if [ -z "$QUIET" ]; then
-		echo  "#### Executing Script: $i" | tee -a $LOG
-		sh $i 2>&1 | tee -a $LOG
-	else
-		echo "#### Executing Script: $i" >> $LOG
-		sh $i >> $LOG
+	echo $SKIPSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
+
+	if [ $? -ne 0 ]; then
+		if [ -z "$QUIET" ]; then
+			echo  "#### Executing Script: $i" | tee -a $LOG
+			sh $i 2>&1 | tee -a $LOG
+		else
+			echo "#### Executing Script: $i" >> $LOG
+			sh $i >> $LOG
+		fi
+	else 
+		echo skipping $i per user request
 	fi
 done;
 
