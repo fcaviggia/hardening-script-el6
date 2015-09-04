@@ -29,6 +29,7 @@ BACKUP=$BASE_DIR/backups
 CONFIG=$BASE_DIR/config
 LOG=/var/log/system-hardening-$DATE.log
 SKIPSCRIPTS=""
+HITSCRIPTS=""
 
 # Script Version
 function version() {
@@ -44,6 +45,8 @@ usage: $0 [options]
   -h 	Show this message
   -q	Quiet output for scripting use
   -s	Skip designated script; argument can be repeated
+  -S	Skip all scripts listed in designated file
+  -I	Only include and run scripts listed in designated file
 
 Hardening Scripts for RHEL 6 (v.$VERSION)
 
@@ -66,7 +69,49 @@ the following standards:
 EOF
 }
 
-while getopts ":vhqs:" OPTION; do
+function addskips() {
+# addskips <filename>
+	if [ ! -f $1 ]; then
+		echo "Referenced skip file not found"
+		exit 1
+	fi
+	for i in `cat $1 | grep -v "^#"`
+	do
+		SKIPSCRIPTS+=$i" "
+	done
+}
+
+function addhits() {
+# addhits <file name>
+	if [ ! -f $1 ]; then
+		echo "Referenced selection file not found"
+		exit 1
+	fi
+	for i in `cat $1 | grep -v "^#"`
+	do
+		HITSCRIPTS+=$i" "
+	done
+}
+
+function processdir() {
+# processdir <dir name> 
+	for i in `ls $1/*.sh`; do 
+		echo $SKIPSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
+		if [ $? -ne 0 ]; then
+			if [ -z "$QUIET" ]; then
+				echo  "#### Executing Script: $i" | tee -a $LOG
+				sh $i 2>&1 | tee -a $LOG
+			else
+				echo "#### Executing Script: $i" >> $LOG
+				sh $i >> $LOG
+			fi
+		else 
+			echo skipping $i per user request
+		fi
+	done;
+}
+
+while getopts ":vhqs:S:I:" OPTION; do
 	case $OPTION in
 		v)
 			version
@@ -81,6 +126,12 @@ while getopts ":vhqs:" OPTION; do
 			;;
 		s) 
 			SKIPSCRIPTS+=$OPTARG" "
+			;;
+		S)
+			addskips $OPTARG
+			;;
+		I)
+			addhits $OPTARG
 			;;
 		?)
 			echo "ERROR: Invalid Option Provided!"
@@ -148,10 +199,10 @@ echo "Starting Configuration" >> $LOG
 
 `rhn_check`
 if [ $? -eq 0 ]; then
-     echo '==================================================='
-     echo ' Verifying RPM Requirements'
-     echo '==================================================='
-     yum -y install aide screen logwatch vlock openswan scrub
+	echo '==================================================='
+	echo ' Verifying RPM Requirements'
+	echo '==================================================='
+	yum -y install aide screen logwatch vlock openswan scrub
 fi
 
 # BACKUP ORIGINAL SYSTEM CONFIGURATIONS
@@ -355,48 +406,37 @@ else
 	fi
 fi
 
-# SECURITY ISSUES
-echo >> $LOG
-for i in `ls scripts/*.sh`; do 
-	echo $SKIPSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
-
-	if [ $? -ne 0 ]; then
-		if [ -z "$QUIET" ]; then
-			echo  "#### Executing Script: $i" | tee -a $LOG
-			sh $i 2>&1 | tee -a $LOG
-		else
-			echo "#### Executing Script: $i" >> $LOG
-			sh $i >> $LOG
+# SELECT SCRIPTS from "SECURITY ISSUES", "CUSTOM HARDENING", and "manual" - in that order
+if [ -n "$HITSCRIPTS" ]; then
+	echo >> $LOG
+	for i in `ls scripts/*.sh` `ls misc/*.sh` `ls manual/*.sh`; do 
+		echo $HITSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
+		if [ $? -eq 0 ]; then
+			if [ -z "$QUIET" ]; then
+				echo  "#### Executing Script: $i" | tee -a $LOG
+				sh $i 2>&1 | tee -a $LOG
+			else
+				echo "#### Executing Script: $i" >> $LOG
+				sh $i >> $LOG
+			fi
 		fi
-	else 
-		echo skipping $i per user request
-	fi
-done;
+	done;
+else
+# SECURITY ISSUES
+	echo >> $LOG
+	processdir scripts
 
 # CUSTOM HARDENING
-if [ -z "$QUIET" ]; then
-	echo
-	echo -e "\033[1mAdditional Hardening\033[0m"
-	echo
-fi
-echo >> $LOG
-echo "Additional Hardening Scripts" >> $LOG
-echo >> $LOG
-for i in `ls misc/*.sh`; do
-	echo $SKIPSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
-
-	if [ $? -ne 0 ]; then
-		if [ -z "$QUIET" ]; then
-			echo  "#### Executing Script: $i" | tee -a $LOG
-			sh $i 2>&1 | tee -a $LOG
-		else
-			echo "#### Executing Script: $i" >> $LOG
-			sh $i >> $LOG
-		fi
-	else 
-		echo skipping $i per user request
+	if [ -z "$QUIET" ]; then
+		echo
+		echo -e "\033[1mAdditional Hardening\033[0m"
+		echo
 	fi
-done;
+	echo >> $LOG
+	echo "Additional Hardening Scripts" >> $LOG
+	echo >> $LOG
+	processdir misc
+fi
 
 if [ -z "$QUIET" ]; then
 	echo 2>&1 | tee -a $LOG;
