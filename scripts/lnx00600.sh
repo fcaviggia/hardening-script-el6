@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 ## (LNX00600: CAT II) (Previously - L230) The SA wiil not configure the
 ## PAM configruation file to allow the first person to log in at the 
 ## console sole access to certian administrative privlages.
