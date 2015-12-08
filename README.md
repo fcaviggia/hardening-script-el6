@@ -34,7 +34,7 @@ inactive users.)
 * ```config``` - Directory with some pre-STIGed configurations (auditd,iptables,system-auth-local,etc.) 
 * ```scripts``` - Hardening Scripts
 * ```misc``` - NSA SNAC, GNOME, and Other miscellenous lockdown scripts
-* ```manual``` - Manaully run (There be dragons here)
+* ```manual``` - Manually run (There be dragons here)
 * ```backups``` - Backup copy of modified files to compare and restore configurations
 
 Run is logged in ```/var/log/stig-fix-YYYY-MM-DD.log```
