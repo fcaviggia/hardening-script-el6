@@ -342,11 +342,14 @@ cp -f ./config/smb.conf /etc/samba/smb.conf
 
 #### AUDITING RULES
 cp -f ./config/auditd.conf /etc/audit/auditd.conf
-if [ "$ARCH" == "x86_64" ]; then
+case "$ARCH" in
+	"x86_64"|"ppc64")
 	cp -f ./config/audit.rules /etc/audit/audit.rules
-else
-	grep -v 'b64' ./config/audit.rules > /etc/audit/rules.d/audit.rules
-fi
+	;;
+	*)
+	grep -v 'b64' ./config/audit.rules > /etc/audit/audit.rules
+	;;
+esac
 
 # Remove RHEL 6.6 /etc/audit/rules.d directory
 if [ -d /etc/audit/rules.d ]; then
