@@ -153,7 +153,7 @@ EOF
 	      --type string \
 	      --set /apps/gnome_settings_daemon/keybindings/power ""
 	      
-	# Disable Ctrl-Alt-Del in GNOME
+	# Enable screen locking via keystroke per RHEL6 V-38474
 	gconftool-2 --direct \
 	      --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory \
 	      --type string \
