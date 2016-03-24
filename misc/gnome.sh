@@ -153,6 +153,12 @@ EOF
 	      --type string \
 	      --set /apps/gnome_settings_daemon/keybindings/power ""
 	      
+	# Disable Ctrl-Alt-Del in GNOME
+	gconftool-2 --direct \
+	      --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory \
+	      --type string \
+	      --set /apps/gnome_settings_daemon/keybindings/screensaver "l"
+	
 	# Disable Clock Temperature
 	gconftool-2 --direct \
 	      --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory \
