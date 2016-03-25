@@ -20,7 +20,7 @@ function is_system_group {
 
 # Lets go through all of the files and if they are not owned by a group
 # with a gid < 500, make the group-owner root.
-for CHKDIR in '/etc /bin /usr/bin /usr/lbin /usr/usb /sbin /usr/sbin'; do
+for CHKDIR in '/etc /bin /usr/bin /usr/lbin /usr/usb /sbin /usr/sbin /usr/local/bin /usr/local/sbin'; do
 	if [ -d "$CHKDIR" ];  then
 		for FILENAME in `find $CHKDIR ! -type l`; do
 			if [ -e "$FILENAME" ]; then
