@@ -47,6 +47,7 @@ Requires:	screen
 Requires:	ntp
 Requires:	openswan
 Requires:	rsyslog
+Requires:	logrotate
 #Obsoletes:	
 #Conflicts:
 
