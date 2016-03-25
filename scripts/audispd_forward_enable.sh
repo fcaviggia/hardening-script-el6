@@ -28,8 +28,10 @@ if [ `grep -c "^[^#]*active" /etc/audisp/plugins.d/syslog.conf ` -gt 0 ]; then
 	if [ $? -eq 0 ]; then
 		sed -i "s/active = no/active = yes/" /etc/audisp/plugins.d/syslog.conf
 	fi
+	service auditd restart
 else
 	echo "#Adding for V-38471" >> /etc/audisp/plugins.d/syslog.conf
 	echo "active = yes" >> /etc/audisp/plugins.d/syslog.conf
+	service auditd restart
 fi
 
