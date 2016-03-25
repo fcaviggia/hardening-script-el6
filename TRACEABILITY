@@ -1,34 +1,34 @@
-V-38437	low	automated	misc/services.sh
-V-38438	low	automated	misc/misc.sh
-V-38439	medium	none
-V-38443	medium	automated	misc/misc.sh
-V-38444	medium	automated	config/ip6tables
-V-38445	medium	automated	scripts/gen002690.sh
-V-38446	medium	none
-V-38447	low	none
-V-38448	medium	automated	misc/misc.sh
-V-38449	medium	automated	misc/misc.sh
-V-38450	medium	automated	misc/misc.sh
-V-38451	medium	automated	misc/misc.sh
-V-38452	low	none
-V-38453	low	
-V-38454	low	
-V-38455	low	
-V-38456	low	
-V-38457	medium	
-V-38458	medium	
-V-38459	medium	
-V-38460	low	
-V-38461	medium	
-V-38462	high	
-V-38463	low	
-V-38464	medium	
-V-38465	medium	
-V-38466	medium	
-V-38467	low	
-V-38468	medium	
-V-38469	medium	
-V-38470	medium	
+V-38437	low	misc/services.sh
+V-38438	low	misc/misc.sh
+V-38439	medium		(manual)
+V-38443	medium	misc/misc.sh
+V-38444	medium	config/ip6tables
+V-38445	medium	scripts/gen002690.sh
+V-38446	medium		(manual)
+V-38447	low		(mostly okay in default; do not install gnome-packagekit to avoid upstream error)
+V-38448	medium	misc/misc.sh
+V-38449	medium	misc/misc.sh
+V-38450	medium	misc/misc.sh
+V-38451	medium	misc/misc.sh
+V-38452	low		(mostly okay in default; error in one OS package, see RedHat bugzilla 1277603)
+V-38453	low		(mostly okay in default; error in one OS package, see RedHat bugzilla 1277603)
+V-38454	low		(okay in default)
+V-38455	low		(create /tmp in kickstart)
+V-38456	low		(create /var in kickstart)
+V-38457	medium		(okay in default)
+V-38458	medium	scripts/gen001391.sh
+V-38459	medium		(okay in default)
+V-38460	low	scripts/gen005880.sh
+V-38461	medium		(okay in default)
+V-38462	high		(okay in default)
+V-38463	low		(create /var/log in kickstart)
+V-38464	medium	config/auditd.conf
+V-38465	medium	scripts/gen001300.sh	(okay in default)
+V-38466	medium		(okay in default)
+V-38467	low		(create /var/log/audit in kickstart)
+V-38468	medium	config/auditd.conf
+V-38469	medium	scripts/gen001140.sh	(okay in default)
+V-38470	medium	config/auditd.conf
 V-38471	low	
 V-38472	medium	
 V-38473	low	
