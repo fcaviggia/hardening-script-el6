@@ -6,7 +6,7 @@ echo '==================================================='
 echo ' Patching GEN001140: System File Permissions'
 echo '==================================================='
 
-for CHKDIR in /etc /bin /usr/bin /usr/lbin /usr/usb /sbin /usr/sbin
+for CHKDIR in /etc /bin /usr/bin /usr/lbin /usr/usb /sbin /usr/sbin /usr/local/bin /usr/local/sbin
 do
   if [ -d "$CHKDIR" ]; then
     for FILENAME in `find $CHKDIR`; do
