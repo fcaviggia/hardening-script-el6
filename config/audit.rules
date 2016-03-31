@@ -201,6 +201,8 @@
 #2.6.2.4.11 Ensure auditd Collects Files Deletion Events by User (successful and unsuccessful)
 -a always,exit -F arch=b32 -S unlink -S rmdir -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
 -a always,exit -F arch=b64 -S unlink -S rmdir -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+-a always,exit -F arch=b32 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid=0 -k delete 
+-a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid=0 -k delete 
 
 #2.6.2.4.12 Ensure auditd Collects System Administrator Actions
 -w /etc/sudoers -p wa -k actions
