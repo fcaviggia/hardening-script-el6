@@ -182,37 +182,37 @@ V-38626	medium		(manual, site configuration specific)
 V-38627	low	scripts/remove_openldap-servers.sh
 V-38628	medium	misc/services.sh
 V-38629	medium	misc/gnome.sh
-V-38630	medium	
-V-38631	medium	
-V-38632	medium	
-V-38633	medium	
-V-38634	medium	
-V-38635	low	
-V-38636	medium	
-V-38637	medium	
-V-38638	medium	
-V-38639	low	
-V-38640	low	
-V-38641	low	
-V-38642	low	
-V-38643	medium	
-V-38644	low	
-V-38645	low	
-V-38646	low	
-V-38647	low	
-V-38648	low	
-V-38649	low	
-V-38650	low	
-V-38651	low	
-V-38652	medium	
-V-38653	high	
-V-38654	medium	
-V-38655	low	
-V-38656	low	
-V-38657	low	
-V-38658	medium	
-V-38659	low	
-V-38660	medium	
+V-38630	medium	misc/gnome.sh
+V-38631	medium	misc/services.sh
+V-38632	medium	misc/services.sh
+V-38633	medium	config/auditd.conf
+V-38634	medium	config/auditd.conf
+V-38635	low	config/audit.rules
+V-38636	medium	config/auditd.conf
+V-38637	medium		(okay in EL6 default)
+V-38638	medium	misc/gnome.sh
+V-38639	low	misc/gnome.sh
+V-38640	low	misc/services.sh
+V-38641	low	misc/services.sh
+V-38642	low	scripts/gen002560.sh
+V-38643	medium		(okay in EL6 default)
+V-38644	low	misc/services.sh
+V-38645	low		(okay in EL6 default)
+V-38646	low	misc/services.sh
+V-38647	low	scripts/gen002560.sh
+V-38648	low	misc/services.sh
+V-38649	low	scripts/gen002560.sh
+V-38650	low	misc/services.sh
+V-38651	low	scripts/gen002560.sh
+V-38652	medium		(manual, only applies if using NFS)
+V-38653	high	scripts/CCE-27593-3-snmpd_not_default_password.sh
+V-38654	medium		(manual, only applies if using NFS)
+V-38655	low	scripts/gen002420.sh
+V-38656	low	config/smb.conf
+V-38657	low		(manual, only applies if using samba mounts)
+V-38658	medium	config/system-auth-local	(apply.sh links file in place)
+V-38659	low		(encryption can be handled via kickstart or dynamically after first boot)
+V-38660	medium	scripts/gen005305.sh
 V-38661	low	
 V-38662	low	
 V-38663	medium	
