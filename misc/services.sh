@@ -16,7 +16,7 @@ for SRV in $OFFSRV; do
 done
 
 ### Enable Services
-ONSRV="postfix iptables"
+ONSRV="postfix iptables crond"
 
 for SRV in $ONSRV; do
 	if [ `/sbin/chkconfig --list | grep -c $SRV` -gt 0 ]; then
