@@ -151,7 +151,7 @@ V-38594	high	scripts/gen003820.sh
 V-38595	medium		(manual)
 V-38596	medium	config/sysctl.conf;scripts/gen003540.sh	(sample config is adequate; don't really need script)
 V-38597	medium	config/sysctl.conf;scripts/gen003540.sh	(sample config is adequate; don't really need script)
-V-38598	high	scripts/disable_rexec.shV-38599	medium	config/vsftpd.conf	(Present in version 10 of STIG and removed in version 11 of STIG)
+V-38598	high	scripts/disable_rexec.sh
 V-38600	medium	config/sysctl.conf
 V-38601	medium	config/sysctl.conf
 V-38602	high	scripts/gen003830.sh
@@ -213,15 +213,15 @@ V-38657	low		(manual, only applies if using samba mounts)
 V-38658	medium	config/system-auth-local	(apply.sh links file in place)
 V-38659	low		(encryption can be handled via kickstart or dynamically after first boot)
 V-38660	medium	scripts/gen005305.sh
-V-38661	low	
-V-38662	low	
-V-38663	medium	
-V-38664	medium	
-V-38665	medium	
-V-38666	high	
-V-38667	medium	
-V-38668	high	
-V-38669	low	
+V-38661	low		(encryption can be handled via kickstart or dynamically after first boot)
+V-38662	low		(encryption can be handled via kickstart or dynamically after first boot)
+V-38663	medium		(okay in EL6 default)
+V-38664	medium		(okay in EL6 default)
+V-38665	medium		(okay in EL6 default)
+V-38666	high		(manual; requires closed-source software)
+V-38667	medium		(manual; requires closed-source software)
+V-38668	high	misc/ctrlaltdel.sh
+V-38669	low	misc/services.sh
 V-38670	medium	
 V-38671	medium	
 V-38672	low	
