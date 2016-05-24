@@ -46,6 +46,7 @@ Requires:	vlock
 Requires:	screen
 Requires:	ntp
 Requires:	openswan
+Requires:	sendmail
 Requires:	rsyslog
 Requires:	logrotate
 #Obsoletes:	
