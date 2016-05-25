@@ -223,7 +223,7 @@ V-38667	medium		(manual; requires closed-source software)
 V-38668	high	misc/ctrlaltdel.sh
 V-38669	low	misc/services.sh
 V-38670	medium	misc/gen000140-x.sh
-V-38671	medium	hardening-script.spec
+V-38671	medium		(okay in EL6 default; just don't install sendmail)
 V-38672	low	misc/services.sh
 V-38673	medium	misc/gen000140-x.sh
 V-38674	medium	misc/runlevel3.sh
