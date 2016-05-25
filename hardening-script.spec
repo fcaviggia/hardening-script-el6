@@ -211,5 +211,5 @@ fi
 %attr(0700,root,root) %{BASE_BIN}/*
 %attr(0600,root,root) %{BASE_CONFIG}/*
 
-%doc README.md COPYING AUTHORS CHANGELOG
+%doc README.md COPYING AUTHORS CHANGELOG STIG_SCRIPT_LIST TRACEABILITY
 %doc hardening-script.spec
