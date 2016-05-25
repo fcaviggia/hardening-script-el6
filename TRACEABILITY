@@ -222,27 +222,27 @@ V-38666	high		(manual; requires closed-source software)
 V-38667	medium		(manual; requires closed-source software)
 V-38668	high	misc/ctrlaltdel.sh
 V-38669	low	misc/services.sh
-V-38670	medium	
-V-38671	medium	
-V-38672	low	
-V-38673	medium	
-V-38674	medium	
-V-38675	low	
-V-38676	low	
-V-38677	high	
-V-38678	medium	
-V-38679	medium	
-V-38680	medium	
-V-38681	low	
-V-38682	medium	
-V-38683	low	
-V-38684	low	
-V-38685	low	
-V-38686	medium	
-V-38687	low	
-V-38688	medium	
-V-38689	medium	
-V-38690	low	
+V-38670	medium	misc/gen000140-x.sh
+V-38671	medium	hardening-script.spec
+V-38672	low	misc/services.sh
+V-38673	medium	misc/gen000140-x.sh
+V-38674	medium	misc/runlevel3.sh
+V-38675	low	config/limits.conf
+V-38676	low		(manual, only applies if X is not required)
+V-38677	high		(okay in EL6 default)
+V-38678	medium	config/auditd.conf
+V-38679	medium		(manual, relates to network configuration)
+V-38680	medium	config/auditd.conf
+V-38681	low		(okay in EL6 default)
+V-38682	medium	misc/blacklist.sh
+V-38683	low		(okay in EL6 default)
+V-38684	low	config/limits.conf
+V-38685	low		(manual; relates to temporary accounts)
+V-38686	medium	config/iptables
+V-38687	low	hardening-script.spec
+V-38688	medium	misc/gnome.sh
+V-38689	medium	misc/gnome.sh;config/issue
+V-38690	low		(manual; relates to emergency accounts)
 V-38691	medium	
 V-38692	low	
 V-38693	low	
