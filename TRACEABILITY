@@ -255,13 +255,13 @@ V-38699	low		(okay in EL6 default)
 V-38700	medium	misc/gen000140-x.sh
 V-38701	high		(okay in EL6 default)
 V-38702	low	config/vsftpd.conf
-V-43150	medium	
-V-51337	medium	
-V-51363	medium	
-V-51369	low	
-V-51379	low	
-V-51391	medium	
-V-51875	medium	
-V-54381	medium	
-V-57569	medium	
-V-58901	medium	
+V-43150	medium	misc/gnome.sh
+V-51337	medium		(okay in EL6 default; if selinux isn't on, you disabled it!)
+V-51363	medium		(okay in EL6 default; if selinux isn't on, you disabled it!)
+V-51369	low		(okay in EL6 default; if selinux isn't on, you disabled it!)
+V-51379	low		(okay in EL6 default)
+V-51391	medium	misc/gen000140-x.sh
+V-51875	medium	config/system-auth-local	(apply.sh links file in place)
+V-54381	medium	config/auditd.conf
+V-57569	medium	scripts/gen002420.sh
+V-58901	medium		(okay in EL6 default)
