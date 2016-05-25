@@ -243,18 +243,18 @@ V-38687	low	hardening-script.spec
 V-38688	medium	misc/gnome.sh
 V-38689	medium	misc/gnome.sh;config/issue
 V-38690	low		(manual; relates to emergency accounts)
-V-38691	medium	
-V-38692	low	
-V-38693	low	
-V-38694	low	
-V-38695	medium	
-V-38696	medium	
-V-38697	low	
-V-38698	medium	
-V-38699	low	
-V-38700	medium	
-V-38701	high	
-V-38702	low	
+V-38691	medium	misc/services.sh
+V-38692	low	scripts/useradd_active_default.sh
+V-38693	low	config/system-auth-local
+V-38694	low	scripts/useradd_active_default.sh
+V-38695	medium	misc/gen000140-x.sh
+V-38696	medium	misc/gen000140-x.sh
+V-38697	low		(okay in EL6 default)
+V-38698	medium	misc/gen000140-x.sh
+V-38699	low		(okay in EL6 default)
+V-38700	medium	misc/gen000140-x.sh
+V-38701	high		(okay in EL6 default)
+V-38702	low	config/vsftpd.conf
 V-43150	medium	
 V-51337	medium	
 V-51363	medium	
