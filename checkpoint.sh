@@ -71,6 +71,9 @@ apply_configuration() {
 	cp -f /etc/audit/auditd.conf $BASE_CONFIG/auditd.conf
 	cp -f /etc/audit/audit.rules $BASE_CONFIG/audit.rules
 
+	#### EXAMPLE FTP CONFIGURATION
+	cp -f /etc/vsftpd/vsftpd.conf $BASE_CONFIG/vsftpd.conf
+
 	#### FIREWALL CONFIGURATIONS (IPV4/IPV6)
 	cp -f /etc/sysconfig/iptables $BASE_CONFIG/iptables
 	cp -f /etc/sysconfig/ip6tables $BASE_CONFIG/ip6tables

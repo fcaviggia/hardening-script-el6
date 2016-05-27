@@ -22,20 +22,6 @@ chmod -R 0600 /etc/audit/*
 chmod -R -w /etc/audit/*
 chmod 0700 /etc/audit
 
-## Fix Missing File Ownership
-find / -nouser -print | xargs chown root
-find / -nogroup -print | xargs chown :root
-if [ ! -e /etc/cron.daily/unowned_files  ]; then
-cat <<EOF > /etc/cron.daily/unowned_files
-#!/bin/sh
-# Fix user and group ownership of files without user
-find / -nouser -print | xargs chown root
-find / -nogroup -print | xargs chown :root
-EOF
-chown root:root /etc/cron.daily/unowned_files
-chmod 0700 /etc/cron.daily/unowned_files
-fi
-
 ## Make SELinux configuration settings immutable
 chattr +i /etc/selinux/config
 

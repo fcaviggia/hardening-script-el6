@@ -5,7 +5,7 @@ echo ' Additional Hardening: Disable Services (CATCH-ALL)'
 echo '==================================================='
 
 ### Disable Services
-OFFSRV="abrt-ccpp abrt-oops abrtd anacron atd apmd autofs avahi-daemon avahi-dnsconfd bluetooth cups dovecot firstboot gpm hidd hplip irda isdn kdump kudzu lm_sensors mcstrans mdmonitor microcode_ctl nfs nfslock portmap procmail portreserve qpidd rpcgssd rpcbind rpcidmap rpcsvcgssd rawdevices readahead_early readahead_later rhnsd restorecond setroubleshoot snmpd squid netfs smb nmb sssd sysstat wpa_supplicant xfs xinetd sendmail"
+OFFSRV="abrt-ccpp abrt-oops abrtd anacron atd apmd autofs avahi-daemon avahi-dnsconfd bluetooth cups dovecot firstboot gpm hidd hplip irda isdn kdump kudzu lm_sensors mcstrans mdmonitor microcode_ctl netconsole nfs nfslock ntpdate oddjobd portmap procmail portreserve qpidd rpcgssd rpcbind rpcidmap rpcsvcgssd rawdevices rdisc readahead_early readahead_later rhnsd restorecond setroubleshoot snmpd squid netfs smb nmb sssd sysstat wpa_supplicant xfs xinetd sendmail tftp"
 
 for SRV in $OFFSRV; do
 	if [ `/sbin/chkconfig --list | grep -c $SRV` -gt 0 ]; then
@@ -16,7 +16,7 @@ for SRV in $OFFSRV; do
 done
 
 ### Enable Services
-ONSRV="postfix iptables"
+ONSRV="postfix iptables crond"
 
 for SRV in $ONSRV; do
 	if [ `/sbin/chkconfig --list | grep -c $SRV` -gt 0 ]; then
