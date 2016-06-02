@@ -22,7 +22,7 @@ if [ $? -eq 0 ]; then
 		restorecon -R -v /var/log/aide/reports &>/dev/null
 	fi
 
-	if [ -e "/etc/cron.daily/aide.cron ]; then
+	if [ -e "/etc/cron.daily/aide.cron" ]; then
 		grep -q aide /etc/cron.daily/aide.cron 2>/dev/null
 		if [ $? -ne 0 ]; then
 			echo '/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /etc/cron.daily/aide.cron
