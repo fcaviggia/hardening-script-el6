@@ -28,6 +28,7 @@ if [ $? -eq 0 ]; then
 			echo '/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /etc/cron.daily/aide.cron
 		fi
 	else
+		echo "#!/bin/bash" > /etc/cron.daily/aide.cron
 		echo "# Configured to meet GEN000140-x" > /etc/cron.daily/aide.cron
 		echo '/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /etc/cron.daily/aide.cron
 		chmod 600 /etc/cron.daily/aide.cron
