@@ -22,15 +22,16 @@ if [ $? -eq 0 ]; then
 		restorecon -R -v /var/log/aide/reports &>/dev/null
 	fi
 
-	if [ -a "/var/spool/cron/root" ]; then
-		grep -q aide /var/spool/cron/root 2>/dev/null
+	if [ -e "/etc/cron.daily/aide.cron" ]; then
+		grep -q aide /etc/cron.daily/aide.cron 2>/dev/null
 		if [ $? -ne 0 ]; then
-			echo '0 0 * * 0		/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /var/spool/cron/root
+			echo '/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /etc/cron.daily/aide.cron
 		fi
 	else
-		echo "# Configured to meet GEN000140-x" > /var/spool/cron/root
-		echo '0 0 * * 0     /usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /var/spool/cron/root
-		chmod 600 /var/spool/cron/root
+		echo "#!/bin/bash" > /etc/cron.daily/aide.cron
+		echo "# Configured to meet GEN000140-x" > /etc/cron.daily/aide.cron
+		echo '/usr/sbin/aide --check > /var/log/aide/reports/$HOSTNAME-AIDEREPORT-$(date +%Y%m%d).txt 2>&1' >> /etc/cron.daily/aide.cron
+		chmod 600 /etc/cron.daily/aide.cron
 	fi
     fi
 else
