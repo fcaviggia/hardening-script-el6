@@ -167,7 +167,7 @@
 -a always,exit -F path=/usr/sbin/groupadd -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
 -a always,exit -F path=/usr/sbin/groupdel -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
 -a always,exit -F path=/usr/sbin/groupmod -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
--a always,exit -F path=/usr/sbin/semangae -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
+-a always,exit -F path=/usr/sbin/semanage -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
 -a always,exit -F path=/usr/sbin/usernetctl -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
 -a always,exit -F path=/usr/sbin/ccreds_validate -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
 -a always,exit -F path=/usr/sbin/userhelper -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged
