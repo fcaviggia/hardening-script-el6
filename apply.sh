@@ -228,92 +228,26 @@ if [ ! -f "$BACKUP/ssh_config.orig" ]; then
 	cp /etc/ssh/ssh_config $BACKUP/ssh_config.orig
 fi
 
-if [ ! -f "$BACKUP/ntp.conf.orig" ]; then
-	cp /etc/ntp.conf $BACKUP/ntp.conf.orig
-fi
-
-if [ ! -f "$BACKUP/krb5.conf.orig" ]; then
-	cp /etc/krb5.conf $BACKUP/krb5.conf.orig
-fi
-
-if [ ! -f "$BACKUP/hosts.allow.orig" ]; then
-	cp /etc/hosts.allow $BACKUP/hosts.allow.orig
-fi
-
-if [ ! -f "$BACKUP/hosts.deny.orig" ]; then
-	cp /etc/hosts.deny $BACKUP/hosts.deny.orig
-fi
-
 if [ ! -f "$BACKUP/profile.orig" ]; then
 	cp /etc/profile $BACKUP/profile.orig
 fi
 
-if [ ! -f "$BACKUP/logrotate.orig" ]; then
-	cp /etc/logrotate.conf $BACKUP/logrotate.conf.orig
-fi
-
-if [ ! -f "$BACKUP/vsftpd.conf.orig" ]; then
-	cp /etc/vsftpd/vsftpd.conf $BACKUP/vsftpd.conf.orig
-fi
-
 if [ -z "$QUIET" ]; then
 	echo "Done." | tee -a $LOG
 else
 	echo "Done." >> $LOG
 fi
 
-# APPLYING DEFAULT SYSTEM CONFIGURATIONS
-if [ -z "$QUIET" ]; then
-	echo -n "Applying base configuration files... " | tee -a $LOG
-else
-	echo -n "Applying base configuration files... " >> $LOG
-fi
 
 # CHANGE DIRECTORY TO BASE DIR
 cd $BASE_DIR
 
-##### LOGROTATE (DAILY)
-cp -f ./config/logrotate.conf /etc/logrotate.conf
-
-#### VSFTPD CONFIGURATION
-# only copy the config file in place if the directory exists
-if [ -d /etc/vsftpd ]; then
-	cp -f ./config/vsftpd.conf /etc/vsftpd/vsftpd.conf
-fi
-
-#### NTP CONFIGURATIONS
-cp -f ./config/ntp.conf /etc/ntp.conf
-
-#### KERBEROS CONFIGURATIONS
-cp -f ./config/krb5.conf /etc/krb5.conf
-
-#### TCP_WRAPPERS CONFIGURATIONS (was GEN006620)
-cp -f ./config/hosts.allow /etc/hosts.allow
-cp -f ./config/hosts.deny /etc/hosts.deny
-
 if [ -z "$QUIET" ]; then
 	echo "Done." | tee -a $LOG
 else
 	echo "Done." >> $LOG
 fi
 
-#### CLEAN TEMP FILES ON REBOOT WITH SCRUB (Server, Workstation)
-rpm -q scrub &>/dev/null
-if [ $? -eq 0 ]; then
-	cp ./config/clean_system /etc/init.d/clean_system
-	chmod +x /etc/init.d/clean_system
-	/sbin/chkconfig --add clean_system
-	/sbin/chkconfig --level 06 clean_system on
-	/sbin/chkconfig --level 12345 clean_system off
-else
-	if [ -z "$QUIET" ]; then
-		echo
-		echo "Scrub not installed. Secure /tmp and /var/tmp wipe service not installed." | tee -a $LOG
-	else
-		echo
-		echo "Scrub not installed. Secure /tmp and /var/tmp wipe service not installed." >> $LOG
-	fi
-fi
 
 # SELECT SCRIPTS from "SECURITY ISSUES", "CUSTOM HARDENING", and "manual" - in that order
 if [ -n "$HITSCRIPTS" ]; then
@@ -333,6 +267,13 @@ if [ -n "$HITSCRIPTS" ]; then
 else
 # SECURITY ISSUES
 	echo >> $LOG
+
+	# APPLYING DEFAULT SYSTEM CONFIGURATIONS
+	if [ -z "$QUIET" ]; then
+		echo -n "Applying base configuration files... " | tee -a $LOG
+	else
+		echo -n "Applying base configuration files... " >> $LOG
+	fi
         processdir config-scripts
 	processdir scripts
 
