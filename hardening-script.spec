@@ -151,8 +151,8 @@ if [ $1 -eq 0 ]; then
     cp %{BASE_BACKUP}/ssh_config.orig /etc/ssh/ssh_config
     cp %{BASE_BACKUP}/smb.conf.orig /etc/samba/smb.conf
     cp %{BASE_BACKUP}/sudoers.orig /etc/sudoers
-    cp %{BASE_BACKUP}/system-auth.pam.orig /etc/pam.d/system-auth
-    cp %{BASE_BACKUP}/password-auth.pam.orig /etc/pam.d/password-auth
+    cp %{BASE_BACKUP}/system-auth.orig /etc/pam.d/system-auth
+    cp %{BASE_BACKUP}/password-auth.orig /etc/pam.d/password-auth
     cp %{BASE_BACKUP}/gnome-screensaver.orig /etc/pam.d/gnome-screensaver
     cp %{BASE_BACKUP}/hosts.allow.orig /etc/hosts.allow
     cp %{BASE_BACKUP}/hosts.deny.orig /etc/hosts.deny
