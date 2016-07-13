@@ -19,7 +19,7 @@ if [ ! -e $BACKUP ]; then
    exit 1
 fi
 
-if [ ! -f "$BACKUP/vsftpd.conf.orig" ]; then
+if [ -f /etc/vsftpd/vsftpd.conf -a ! -f "$BACKUP/vsftpd.conf.orig" ]; then
 	cp /etc/vsftpd/vsftpd.conf $BACKUP/vsftpd.conf.orig
 fi
 
