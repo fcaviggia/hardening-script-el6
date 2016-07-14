@@ -30,7 +30,7 @@ V-38464	medium	config-scripts/iptables6.sh
 V-38465	medium	scripts/gen001300.sh	(okay in EL6 default)
 V-38466	medium		(okay in EL6 default)
 V-38467	low		(create /var/log/audit in kickstart)
-V-38468	medium	config-scripts/iptables6.sh
+V-38468	medium	config-scripts/audit.sh
 V-38469	medium	scripts/gen001140.sh	(okay in EL6 default)
 V-38470	medium	config-scripts/iptables6.sh
 V-38471	low	scripts/audispd_forward_enable.sh	
