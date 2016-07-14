@@ -19,7 +19,7 @@ if [ ! -e $BACKUP ]; then
    exit 1
 fi
 
-if [ ! -f "$BACKUP/ip6tables.orig" ]; then
+if [ -f /etc/sysconfig/ip6tables -a ! -f "$BACKUP/ip6tables.orig" ]; then
 	cp /etc/sysconfig/ip6tables /etc/sysconfig/ip6tables.orig
 	cp /etc/sysconfig/ip6tables $BACKUP/ip6tables.orig
 fi

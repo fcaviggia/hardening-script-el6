@@ -20,7 +20,7 @@ if [ ! -e $BACKUP ]; then
 fi
 
 
-if [ ! -f "$BACKUP/iptables.orig" ]; then
+if [ -f /etc/sysconfig/iptables -a ! -f "$BACKUP/iptables.orig" ]; then
 	cp /etc/sysconfig/iptables /etc/sysconfig/iptables.orig
 	cp /etc/sysconfig/iptables $BACKUP/iptables.orig
 fi
