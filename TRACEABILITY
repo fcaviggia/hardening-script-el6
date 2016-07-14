@@ -32,7 +32,7 @@ V-38466	medium		(okay in EL6 default)
 V-38467	low		(create /var/log/audit in kickstart)
 V-38468	medium	config-scripts/audit.sh
 V-38469	medium	scripts/gen001140.sh	(okay in EL6 default)
-V-38470	medium	config-scripts/iptables6.sh
+V-38470	medium	config-scripts/audit.sh
 V-38471	low	scripts/audispd_forward_enable.sh	
 V-38472	medium	scripts/gen001220.sh	(okay in EL6 default)
 V-38473	low		(create /home in kickstart)
@@ -46,7 +46,7 @@ V-38480	low	config-scripts/logindefs.sh
 V-38481	medium		(manual, partially covered by scripts/gen000120.sh)
 V-38482	low	config-scripts/system-auth.sh
 V-38483	medium		(okay in EL6 default)
-V-38484	medium	config-scripts/system-auth.sh
+V-38484	medium	config-scripts/sshd.sh
 V-38486	medium		(manual)
 V-38487	low		(manual, partially covered by scripts/gen000120.sh)
 V-38488	medium		(manual)
