@@ -255,12 +255,18 @@ if [ -n "$HITSCRIPTS" ]; then
 	for i in `ls config-scripts/*.sh scripts/*.sh` `ls misc/*.sh` `ls manual/*.sh`; do 
 		echo $HITSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
 		if [ $? -eq 0 ]; then
-			if [ -z "$QUIET" ]; then
-				echo  "#### Executing Script: $i" | tee -a $LOG
-				sh $i 2>&1 | tee -a $LOG
-			else
-				echo "#### Executing Script: $i" >> $LOG
-				sh $i >> $LOG
+
+			echo $SKIPSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
+			if [ $? -ne 0 ]; then
+				if [ -z "$QUIET" ]; then
+					echo  "#### Executing Script: $i" | tee -a $LOG
+					sh $i 2>&1 | tee -a $LOG
+				else
+					echo "#### Executing Script: $i" >> $LOG
+					sh $i >> $LOG
+				fi
+			else 
+				echo skipping $i per user request
 			fi
 		fi
 	done;
