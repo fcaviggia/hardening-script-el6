@@ -195,7 +195,7 @@ fi
 echo "SCRIPT RUN: $(date)" >> $LOG
 echo "Starting Configuration" >> $LOG
 
-`rhn_check`
+`rhn_check 2>/dev/null`
 if [ $? -eq 0 ]; then
 	echo '==================================================='
 	echo ' Verifying RPM Requirements'
