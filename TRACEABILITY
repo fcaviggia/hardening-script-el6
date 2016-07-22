@@ -6,7 +6,7 @@ V-38437	low	misc/services.sh
 V-38438	low	misc/misc.sh	
 V-38439	medium		(manual)
 V-38443	medium	misc/misc.sh	
-V-38444	medium	config/ip6tables	
+V-38444	medium	config-scripts/iptables6.sh
 V-38445	medium	scripts/gen002690.sh	
 V-38446	medium		(manual)
 V-38447	low		(mostly okay in EL6 default; do not install gnome-packagekit to avoid upstream error)
@@ -26,27 +26,27 @@ V-38460	low	scripts/gen005880.sh
 V-38461	medium		(okay in EL6 default)
 V-38462	high		(okay in EL6 default; removed in version 11 of STIG)
 V-38463	low		(create /var/log in kickstart)
-V-38464	medium	config/auditd.conf	
+V-38464	medium	config-scripts/iptables6.sh
 V-38465	medium	scripts/gen001300.sh	(okay in EL6 default)
 V-38466	medium		(okay in EL6 default)
 V-38467	low		(create /var/log/audit in kickstart)
-V-38468	medium	config/auditd.conf	
+V-38468	medium	config-scripts/audit.sh
 V-38469	medium	scripts/gen001140.sh	(okay in EL6 default)
-V-38470	medium	config/auditd.conf	
+V-38470	medium	config-scripts/audit.sh
 V-38471	low	scripts/audispd_forward_enable.sh	
 V-38472	medium	scripts/gen001220.sh	(okay in EL6 default)
 V-38473	low		(create /home in kickstart)
 V-38474	low	misc/gnome.sh	
-V-38475	medium	config/login.defs;scripts/gen000580.sh	
+V-38475	medium	config-scripts/logindefs.sh;scripts/gen000580.sh	
 V-38476	high		(okay in EL6 default)
-V-38477	medium	config/login.defs;scripts/gen000540.sh	
+V-38477	medium	config-scripts/logindefs.sh;scripts/gen000540.sh	
 V-38478	low	misc/services.sh	
-V-38479	medium	config/login.defs;scripts/gen000700.sh	
-V-38480	low	config/login.defs	
+V-38479	medium	config-scripts/logindefs.sh;scripts/gen000700.sh	
+V-38480	low	config-scripts/logindefs.sh
 V-38481	medium		(manual, partially covered by scripts/gen000120.sh)
-V-38482	low	config/system-auth-local	(apply.sh links file in place)
+V-38482	low	config-scripts/system-auth.sh
 V-38483	medium		(okay in EL6 default)
-V-38484	medium	config/sshd_config	
+V-38484	medium	config-scripts/sshd.sh
 V-38486	medium		(manual)
 V-38487	low		(manual, partially covered by scripts/gen000120.sh)
 V-38488	medium		(manual)
@@ -58,17 +58,17 @@ V-38493	medium		(okay in EL6 default; available scripts do not cover directory p
 V-38494	low	scripts/gen000980.sh	
 V-38495	medium		(okay in EL6 default; available scripts do not cover file ownership)
 V-38496	medium		(okay in EL6 default)
-V-38497	high	config/system-auth-local	(apply.sh links file in place)
+V-38497	high	config-scripts/system-auth.sh
 V-38498	medium		(okay in EL6 default; available scripts do not cover permissions)
 V-38499	medium		(manual; scripts/gen001470.sh can assist in review)
 V-38500	medium		(okay in EL6 default)
-V-38501	medium	config/password-auth-local	(apply.sh links file in place)
+V-38501	medium	config-scripts/password-auth.sh
 V-38502	medium		(okay in EL6 default)
 V-38503	medium	scripts/gen001410.sh	(okay in EL6 default)
 V-38504	medium	misc/misc.sh	(okay in EL6 default)
-V-38511	medium	config/sysctl.conf;scripts/gen005600.sh	
+V-38511	medium	config-scripts/sysctl.sh;scripts/gen005600.sh	
 V-38512	medium	scripts/gen008520.sh	
-V-38513	medium	config/iptables	
+V-38513	medium	config-scripts/iptables4.sh
 V-38514	medium	misc/blacklist.sh	
 V-38515	medium	misc/blacklist.sh	
 V-38516	low	misc/blacklist.sh	
@@ -77,63 +77,63 @@ V-38518	medium		(okay in EL6 default)
 V-38519	medium		(okay in EL6 default)
 V-38520	medium		(manual)
 V-38521	medium		(manual)
-V-38522	low	config/audit.rules
-V-38523	medium	config/sysctl.conf
-V-38524	medium	config/sysctl.conf
-V-38525	low	config/audit.rules
-V-38526	medium	config/sysctl.conf
-V-38527	low	config/audit.rules
-V-38528	low	config/sysctl.conf
-V-38529	medium	config/sysctl.conf
-V-38530	low	config/audit.rules
-V-38531	low	config/audit.rules
-V-38532	medium	config/sysctl.conf
-V-38533	low	config/sysctl.conf
-V-38534	low	config/audit.rules
-V-38535	low	config/sysctl.conf
-V-38536	low	config/audit.rules
-V-38537	low	config/sysctl.conf
-V-38538	low	config/audit.rules
-V-38539	medium	config/sysctl.conf
-V-38540	low	config/audit.rules
-V-38541	low	config/audit.rules
-V-38542	medium	config/sysctl.conf
-V-38543	low	config/audit.rules
-V-38544	medium	config/sysctl.conf
-V-38545	low	config/audit.rules
+V-38522	low	config-scripts/audit.sh
+V-38523	medium	config-scripts/sysctl.sh
+V-38524	medium	config-scripts/sysctl.sh
+V-38525	low	config-scripts/audit.sh
+V-38526	medium	config-scripts/sysctl.sh
+V-38527	low	config-scripts/audit.sh
+V-38528	low	config-scripts/sysctl.sh
+V-38529	medium	config-scripts/sysctl.sh
+V-38530	low	config-scripts/audit.sh
+V-38531	low	config-scripts/audit.sh
+V-38532	medium	config-scripts/sysctl.sh
+V-38533	low	config-scripts/sysctl.sh
+V-38534	low	config-scripts/audit.sh
+V-38535	low	config-scripts/sysctl.sh
+V-38536	low	config-scripts/audit.sh
+V-38537	low	config-scripts/sysctl.sh
+V-38538	low	config-scripts/audit.sh
+V-38539	medium	config-scripts/sysctl.sh
+V-38540	low	config-scripts/audit.sh
+V-38541	low	config-scripts/audit.sh
+V-38542	medium	config-scripts/sysctl.sh
+V-38543	low	config-scripts/audit.sh
+V-38544	medium	config-scripts/sysctl.sh
+V-38545	low	config-scripts/audit.sh
 V-38546	medium	misc/blacklist.sh
-V-38547	low	config/audit.rules
-V-38548	medium	config/sysctl.conf
+V-38547	low	config-scripts/audit.sh
+V-38548	medium	config-scripts/sysctl.sh
 V-38549	medium	scripts/gen007700.sh;misc/services.sh
-V-38550	low	config/audit.rules
+V-38550	low	config-scripts/audit.sh
 V-38551	medium	scripts/gen007700.sh;misc/services.sh
-V-38552	low	config/audit.rules
+V-38552	low	config-scripts/audit.sh
 V-38553	medium	scripts/gen007700.sh;misc/services.sh
-V-38554	low	config/audit.rules
+V-38554	low	config-scripts/audit.sh
 V-38555	medium	scripts/gen008520.sh
-V-38556	low	config/audit.rules
-V-38557	low	config/audit.rules
-V-38558	low	config/audit.rules
-V-38559	low	config/audit.rules
+V-38556	low	config-scripts/audit.sh
+V-38557	low	config-scripts/audit.sh
+V-38558	low	config-scripts/audit.sh
+V-38559	low	config-scripts/audit.sh
 V-38560	medium	scripts/gen008520.sh
-V-38561	low	config/audit.rules
-V-38563	low	config/audit.rules
-V-38565	low	config/audit.rules
-V-38566	low	config/audit.rules
-V-38567	low	config/audit.rules	(partially manual; several common commands are already covered in the sample config file)
-V-38568	low	config/audit.rules
-V-38569	low	config/system-auth-local	(apply.sh links file in place)
-V-38570	low	config/system-auth-local	(apply.sh links file in place)
-V-38571	low	config/system-auth-local	(apply.sh links file in place)
-V-38572	low	config/system-auth-local	(apply.sh links file in place)
-V-38573	medium	config/password-auth-local	(apply.sh links file in place)
+V-38561	low	config-scripts/audit.sh
+V-38563	low	config-scripts/audit.sh
+V-38565	low	config-scripts/audit.sh
+V-38566	low	config-scripts/audit.sh
+V-38567	low	config-scripts/audit.sh	(partially manual; several common commands are already covered in the sample config file)
+V-38568	low	config-scripts/audit.sh
+V-38569	low	config-scripts/system-auth.sh	
+V-38570	low	config-scripts/system-auth.sh	
+V-38571	low	config-scripts/system-auth.sh	
+V-38572	low	config-scripts/system-auth.sh	
+V-38573	medium	config-scripts/password-auth.sh	
 V-38574	medium		(okay in EL6 default)
-V-38575	low	config/password-auth-local;config/system-auth-local
-V-38576	medium	config/login.defs
+V-38575	low	config-scripts/password-auth.sh;config-scripts/system-auth.sh
+V-38576	medium	config-scripts/logindefs.sh
 V-38577	medium		(okay in EL6 default)
-V-38578	low	config/audit.rules
+V-38578	low	config-scripts/audit.sh
 V-38579	medium	scripts/gen008760.sh
-V-38580	medium	config/audit.rules
+V-38580	medium	config-scripts/audit.sh
 V-38581	medium	scripts/gen008780.sh
 V-38582	medium	misc/services.sh
 V-38583	medium	scripts/gen008720.sh
@@ -145,35 +145,35 @@ V-38588	medium	scripts/gen000020.sh
 V-38589	high	scripts/gen004800.sh
 V-38590	low	hardening-script.spec
 V-38591	high	scripts/gen003825.sh
-V-38592	medium	config/system-auth-local	(apply.sh links file in place)
-V-38593	medium	scripts/gen000400.sh;config/issue
+V-38592	medium	config-scripts/system-auth.sh	
+V-38593	medium	scripts/gen000400.sh
 V-38594	high	scripts/gen003820.sh
 V-38595	medium		(manual)
-V-38596	medium	config/sysctl.conf;scripts/gen003540.sh	(sample config is adequate; don't really need script)
-V-38597	medium	config/sysctl.conf;scripts/gen003540.sh	(sample config is adequate; don't really need script)
+V-38596	medium	config-scripts/sysctl.sh;scripts/gen003540.sh	(sample config is adequate; don't really need script)
+V-38597	medium	config-scripts/sysctl.sh;scripts/gen003540.sh	(sample config is adequate; don't really need script)
 V-38598	high	scripts/disable_rexec.sh
-V-38600	medium	config/sysctl.conf
-V-38601	medium	config/sysctl.conf
+V-38600	medium	config-scripts/sysctl.sh
+V-38601	medium	config-scripts/sysctl.sh
 V-38602	high	scripts/gen003830.sh
 V-38603	medium	scripts/remove_ypserv.sh
 V-38604	medium	scripts/gen006400.sh
 V-38605	medium	misc/services.sh
 V-38606	medium	scripts/remove_tftpd.sh
-V-38607	high	config/sshd_config
-V-38608	low	config/sshd_config
+V-38607	high	config-scripts/sshd.sh
+V-38608	low	config-scripts/sshd.sh
 V-38609	medium	misc/services.sh
-V-38610	low	config/sshd_config
-V-38611	medium	config/sshd_config
-V-38612	medium	config/sshd_config
-V-38613	medium	config/sshd_config
-V-38614	high	config/sshd_config
-V-38615	medium	config/sshd_config
-V-38616	low	config/sshd_config
-V-38617	medium	config/sshd_config
+V-38610	low	config-scripts/sshd.sh
+V-38611	medium	config-scripts/sshd.sh
+V-38612	medium	config-scripts/sshd.sh
+V-38613	medium	config-scripts/sshd.sh
+V-38614	high	config-scripts/sshd.sh
+V-38615	medium	config-scripts/sshd.sh
+V-38616	low	config-scripts/sshd.sh
+V-38617	medium	config-scripts/sshd.sh
 V-38618	low	misc/services.sh
 V-38619	medium	scripts/gen002000.sh
 V-38620	medium	scripts/cce-27093-4.sh
-V-38621	medium	config/ntp.conf
+V-38621	medium	config-scripts/ntp.sh
 V-38622	medium		(okay in EL6 default; see also scripts/gen004710.sh)
 V-38623	medium	scripts/gen001260.sh
 V-38624	low		(okay in EL6 default; logrotate installs via hardening scripts package spec file)
@@ -185,10 +185,10 @@ V-38629	medium	misc/gnome.sh
 V-38630	medium	misc/gnome.sh
 V-38631	medium	misc/services.sh
 V-38632	medium	misc/services.sh
-V-38633	medium	config/auditd.conf
-V-38634	medium	config/auditd.conf
-V-38635	low	config/audit.rules
-V-38636	medium	config/auditd.conf
+V-38633	medium	config-scripts/audit.sh
+V-38634	medium	config-scripts/audit.sh
+V-38635	low	config-scripts/audit.sh
+V-38636	medium	config-scripts/audit.sh
 V-38637	medium		(okay in EL6 default)
 V-38638	medium	misc/gnome.sh
 V-38639	low	misc/gnome.sh
@@ -208,9 +208,9 @@ V-38652	medium		(manual, only applies if using NFS)
 V-38653	high	scripts/CCE-27593-3-snmpd_not_default_password.sh
 V-38654	medium		(manual, only applies if using NFS)
 V-38655	low	scripts/gen002420.sh
-V-38656	low	config/smb.conf
+V-38656	low	config-scripts/smb.sh
 V-38657	low		(manual, only applies if using samba mounts)
-V-38658	medium	config/system-auth-local	(apply.sh links file in place)
+V-38658	medium	config-scripts/system-auth.sh	
 V-38659	low		(encryption can be handled via kickstart or dynamically after first boot)
 V-38660	medium	scripts/gen005305.sh
 V-38661	low		(encryption can be handled via kickstart or dynamically after first boot)
@@ -227,25 +227,25 @@ V-38671	medium		(okay in EL6 default; just don't install sendmail)
 V-38672	low	misc/services.sh
 V-38673	medium	misc/gen000140-x.sh
 V-38674	medium	misc/runlevel3.sh
-V-38675	low	config/limits.conf
+V-38675	low	config-scripts/limits.sh
 V-38676	low		(manual, only applies if X is not required)
 V-38677	high		(okay in EL6 default)
-V-38678	medium	config/auditd.conf
+V-38678	medium	config-scripts/audit.sh
 V-38679	medium		(manual, relates to network configuration)
-V-38680	medium	config/auditd.conf
+V-38680	medium	config-scripts/audit.sh
 V-38681	low		(okay in EL6 default)
 V-38682	medium	misc/blacklist.sh
 V-38683	low		(okay in EL6 default)
-V-38684	low	config/limits.conf
+V-38684	low	config-scripts/limits.sh
 V-38685	low		(manual; relates to temporary accounts)
-V-38686	medium	config/iptables
+V-38686	medium	config-scripts/iptables4.sh
 V-38687	low	hardening-script.spec
 V-38688	medium	misc/gnome.sh
-V-38689	medium	misc/gnome.sh;config/issue
+V-38689	medium	misc/gnome.sh;scripts/gen000400.sh
 V-38690	low		(manual; relates to emergency accounts)
 V-38691	medium	misc/services.sh
 V-38692	low	scripts/useradd_active_default.sh
-V-38693	low	config/system-auth-local
+V-38693	low	config-scripts/system-auth.sh
 V-38694	low	scripts/useradd_active_default.sh
 V-38695	medium	misc/gen000140-x.sh
 V-38696	medium	misc/gen000140-x.sh
@@ -254,14 +254,14 @@ V-38698	medium	misc/gen000140-x.sh
 V-38699	low		(okay in EL6 default)
 V-38700	medium	misc/gen000140-x.sh
 V-38701	high		(okay in EL6 default)
-V-38702	low	config/vsftpd.conf
+V-38702	low	config-scripts/vsftpd.sh
 V-43150	medium	misc/gnome.sh
 V-51337	medium		(okay in EL6 default; if selinux isn't on, you disabled it!)
 V-51363	medium		(okay in EL6 default; if selinux isn't on, you disabled it!)
 V-51369	low		(okay in EL6 default; if selinux isn't on, you disabled it!)
 V-51379	low		(okay in EL6 default)
 V-51391	medium	misc/gen000140-x.sh
-V-51875	medium	config/system-auth-local	(apply.sh links file in place)
-V-54381	medium	config/auditd.conf
+V-51875	medium	config-scripts/system-auth.sh	
+V-54381	medium	config-scripts/audit.sh
 V-57569	medium	scripts/gen002420.sh
-V-58901	medium	config/sudoers
+V-58901	medium	config-scripts/sudoers.sh

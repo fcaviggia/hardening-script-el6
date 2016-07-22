@@ -1,4 +1,17 @@
 # Provide this file with the -I flag to run only those scripts directly relating to the RHEL 6 STIG
+config-scripts/audit.sh
+config-scripts/iptables4.sh
+config-scripts/iptables6.sh
+config-scripts/limits.sh
+config-scripts/logindefs.sh
+config-scripts/ntp.sh
+config-scripts/password-auth.sh
+config-scripts/smb.sh
+config-scripts/sshd.sh
+config-scripts/sudoers.sh
+config-scripts/sysctl.sh
+config-scripts/system-auth.sh
+config-scripts/vsftpd.sh
 misc/blacklist.sh
 misc/ctrlaltdel.sh
 misc/gen000140-x.sh

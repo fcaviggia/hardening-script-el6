@@ -22,11 +22,9 @@ function realpath() {
 
 # ENVIRONMENT VARIABLES
 DATE=`date +%F`
-ARCH=`uname -i`
 VERSION='1.1'
 BASE_DIR=`dirname $(realpath $0)`
 BACKUP=$BASE_DIR/backups
-CONFIG=$BASE_DIR/config
 LOG=/var/log/system-hardening-$DATE.log
 SKIPSCRIPTS=""
 HITSCRIPTS=""
@@ -197,7 +195,7 @@ fi
 echo "SCRIPT RUN: $(date)" >> $LOG
 echo "Starting Configuration" >> $LOG
 
-`rhn_check`
+`rhn_check 2>/dev/null`
 if [ $? -eq 0 ]; then
 	echo '==================================================='
 	echo ' Verifying RPM Requirements'
@@ -216,6 +214,8 @@ if [ ! -d $BACKUP ]; then
 	mkdir -p $BACKUP
 fi
 
+
+# Miscellaneous backups that don't fit cleanly into other scripts
 if [ ! -f "$BACKUP/issue.orig" ]; then
 	cp /etc/issue $BACKUP/issue.orig
 fi
@@ -224,219 +224,63 @@ if [ ! -f "$BACKUP/issue.net.orig" ]; then
 	cp /etc/issue.net $BACKUP/issue.net.orig
 fi
 
-if [ ! -f "$BACKUP/sysctl.conf.orig" ]; then
-	cp /etc/sysctl.conf $BACKUP/sysctl.conf.orig
-fi
-
-if [ ! -f "$BACKUP/login.defs.orig" ]; then
-	cp /etc/login.defs $BACKUP/login.defs.orig
-fi
-
-if [ ! -f "$BACKUP/audit.rules.orig" ]; then
-	cp /etc/audit/audit.rules $BACKUP/audit.rules.orig
-fi
-
-if [ ! -f "$BACKUP/auditd.conf.orig" ]; then
-	cp /etc/audit/auditd.conf $BACKUP/auditd.conf.orig
-fi
-
-if [ ! -f "$BACKUP/limits.conf.orig" ]; then
-	cp /etc/security/limits.conf $BACKUP/limits.conf.orig
-fi
-
-if [ ! -f "$BACKUP/sshd_config.orig" ]; then
-	cp /etc/ssh/sshd_config $BACKUP/sshd_config.orig
-fi
-
 if [ ! -f "$BACKUP/ssh_config.orig" ]; then
 	cp /etc/ssh/ssh_config $BACKUP/ssh_config.orig
-fi
-
-if [ ! -f "$BACKUP/system-auth.pam.orig" ]; then
-	cp /etc/pam.d/system-auth $BACKUP/system-auth.pam.orig
-fi
-
-if [ ! -f "$BACKUP/gnome-screensaver.orig" ]; then
-	cp /etc/pam.d/gnome-screensaver $BACKUP/gnome-screensaver.orig
-fi
-
-if [ ! -f "$BACKUP/password-auth.pam.orig" ]; then
-	cp /etc/pam.d/password-auth $BACKUP/pasword-auth.pam.orig
-fi
-
-if [ ! -f "$BACKUP/sudoers.orig" ]; then
-	cp /etc/sudoers $BACKUP/sudoers.orig
-fi
-
-if [ ! -f "$BACKUP/smb.conf.orig" ]; then
-	cp /etc/samba/smb.conf $BACKUP/smb.conf.orig
-fi
-
-if [ ! -f "$BACKUP/ntp.conf.orig" ]; then
-	cp /etc/ntp.conf $BACKUP/ntp.conf.orig
-fi
-
-if [ ! -f "$BACKUP/krb5.conf.orig" ]; then
-	cp /etc/krb5.conf $BACKUP/krb5.conf.orig
-fi
-
-if [ ! -f "$BACKUP/hosts.allow.orig" ]; then
-	cp /etc/hosts.allow $BACKUP/hosts.allow.orig
-fi
-
-if [ ! -f "$BACKUP/hosts.deny.orig" ]; then
-	cp /etc/hosts.deny $BACKUP/hosts.deny.orig
 fi
 
 if [ ! -f "$BACKUP/profile.orig" ]; then
 	cp /etc/profile $BACKUP/profile.orig
 fi
 
-if [ ! -f "$BACKUP/logrotate.orig" ]; then
-	cp /etc/logrotate.conf $BACKUP/logrotate.orig
-fi
-
-if [ ! -f "$BACKUP/vsftpd.conf.orig" ]; then
-	cp /etc/vsftpd/vsftpd.conf $BACKUP/vsftpd.conf.orig
-fi
-
-if [ ! -f "$BACKUP/iptables.orig" ]; then
-	cp /etc/sysconfig/iptables /etc/sysconfig/iptables.orig
-	cp /etc/sysconfig/iptables $BACKUP/iptables.orig
-fi
-
-if [ ! -f "$BACKUP/ip6tables.orig" ]; then
-	cp /etc/sysconfig/ip6tables /etc/sysconfig/ip6tables.orig
-	cp /etc/sysconfig/ip6tables $BACKUP/ip6tables.orig
-fi
-
 if [ -z "$QUIET" ]; then
 	echo "Done." | tee -a $LOG
 else
 	echo "Done." >> $LOG
 fi
 
-# APPLYING DEFAULT SYSTEM CONFIGURATIONS
-if [ -z "$QUIET" ]; then
-	echo -n "Applying base configuration files... " | tee -a $LOG
-else
-	echo -n "Applying base configuration files... " >> $LOG
-fi
 
 # CHANGE DIRECTORY TO BASE DIR
 cd $BASE_DIR
 
-#### SSH CONIFIGURATION
-cp -f ./config/sshd_config /etc/ssh/sshd_config
-`ls /etc/ssh/ssh_host_* | grep -q key`
-if [ $? -ne 0 ]; then
-	/etc/init.d/sshd restart &> /dev/null
-fi
-
-#### KERNEL PARAMETERS
-cp ./config/sysctl.conf /etc/sysctl.conf
-/sbin/sysctl -p /etc/sysctl.conf
-
-#### USER AND PASSWORD CONFIGURATIONS
-cp -f ./config/limits.conf /etc/security/limits.conf
-cp -f ./config/login.defs /etc/login.defs
-
-#### EXAMPLE SAMBA CONFIGURATION
-cp -f ./config/smb.conf /etc/samba/smb.conf
-
-#### AUDITING RULES
-cp -f ./config/auditd.conf /etc/audit/auditd.conf
-case "$ARCH" in
-	"x86_64"|"ppc64")
-	cp -f ./config/audit.rules /etc/audit/audit.rules
-	;;
-	*)
-	grep -v 'b64' ./config/audit.rules > /etc/audit/audit.rules
-	;;
-esac
-
-# Remove RHEL 6.6 /etc/audit/rules.d directory
-if [ -d /etc/audit/rules.d ]; then
-	rm -rf /etc/audit/rules.d
-fi
-
-#### FIREWALL CONFIGURATIONS (IPV4/IPV6)
-cp -f ./config/iptables /etc/sysconfig/iptables
-cp -f ./config/ip6tables /etc/sysconfig/ip6tables
-
-#### PAM CONFIGURATIONS
-cp -f ./config/system-auth-local /etc/pam.d/system-auth-local
-cp -f ./config/system-auth-local /etc/pam.d/system-auth-ac
-ln -sf /etc/pam.d/system-auth-local /etc/pam.d/system-auth 
-cp -f ./config/password-auth-local /etc/pam.d/password-auth-local
-cp -f ./config/password-auth-local /etc/pam.d/password-auth-ac
-ln -sf /etc/pam.d/password-auth-local /etc/pam.d/password-auth
-cp -f ./config/gnome-screensaver /etc/pam.d/gnome-screensaver
-
-##### SUDO CONFIGURATION (isso role, sudo access for wheel)
-cp -f ./config/sudoers /etc/sudoers
-
-##### LOGROTATE (DAILY)
-cp -f ./config/logrotate.conf /etc/logrotate.conf
-
-#### VSFTPD CONFIGURATION
-# only copy the config file in place if the directory exists
-if [ -d /etc/vsftpd ]; then
-	cp -f ./config/vsftpd.conf /etc/vsftpd/vsftpd.conf
-fi
-
-#### NTP CONFIGURATIONS
-cp -f ./config/ntp.conf /etc/ntp.conf
-
-#### KERBEROS CONFIGURATIONS
-cp -f ./config/krb5.conf /etc/krb5.conf
-
-#### TCP_WRAPPERS CONFIGURATIONS (was GEN006620)
-cp -f ./config/hosts.allow /etc/hosts.allow
-cp -f ./config/hosts.deny /etc/hosts.deny
-
 if [ -z "$QUIET" ]; then
 	echo "Done." | tee -a $LOG
 else
 	echo "Done." >> $LOG
 fi
 
-#### CLEAN TEMP FILES ON REBOOT WITH SCRUB (Server, Workstation)
-rpm -q scrub &>/dev/null
-if [ $? -eq 0 ]; then
-	cp ./config/clean_system /etc/init.d/clean_system
-	chmod +x /etc/init.d/clean_system
-	/sbin/chkconfig --add clean_system
-	/sbin/chkconfig --level 06 clean_system on
-	/sbin/chkconfig --level 12345 clean_system off
-else
-	if [ -z "$QUIET" ]; then
-		echo
-		echo "Scrub not installed. Secure /tmp and /var/tmp wipe service not installed." | tee -a $LOG
-	else
-		echo
-		echo "Scrub not installed. Secure /tmp and /var/tmp wipe service not installed." >> $LOG
-	fi
-fi
 
 # SELECT SCRIPTS from "SECURITY ISSUES", "CUSTOM HARDENING", and "manual" - in that order
 if [ -n "$HITSCRIPTS" ]; then
 	echo >> $LOG
-	for i in `ls scripts/*.sh` `ls misc/*.sh` `ls manual/*.sh`; do 
+	for i in `ls config-scripts/*.sh scripts/*.sh` `ls misc/*.sh` `ls manual/*.sh`; do 
 		echo $HITSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
 		if [ $? -eq 0 ]; then
-			if [ -z "$QUIET" ]; then
-				echo  "#### Executing Script: $i" | tee -a $LOG
-				sh $i 2>&1 | tee -a $LOG
-			else
-				echo "#### Executing Script: $i" >> $LOG
-				sh $i >> $LOG
+
+			echo $SKIPSCRIPTS | grep -q `echo $i | cut -f 2- -d /`
+			if [ $? -ne 0 ]; then
+				if [ -z "$QUIET" ]; then
+					echo  "#### Executing Script: $i" | tee -a $LOG
+					sh $i 2>&1 | tee -a $LOG
+				else
+					echo "#### Executing Script: $i" >> $LOG
+					sh $i >> $LOG
+				fi
+			else 
+				echo skipping $i per user request
 			fi
 		fi
 	done;
 else
 # SECURITY ISSUES
 	echo >> $LOG
+
+	# APPLYING DEFAULT SYSTEM CONFIGURATIONS
+	if [ -z "$QUIET" ]; then
+		echo -n "Applying base configuration files... " | tee -a $LOG
+	else
+		echo -n "Applying base configuration files... " >> $LOG
+	fi
+        processdir config-scripts
 	processdir scripts
 
 # CUSTOM HARDENING
