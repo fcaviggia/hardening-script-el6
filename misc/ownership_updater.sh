@@ -2,7 +2,7 @@
 
 ## Ownership updates formerly found in misc.sh
 echo '==================================================='
-echo ' Additonal Hardening: Miscellenous ownership updates
+echo ' Additonal Hardening: Miscellenous ownership updates'
 echo '==================================================='
 
 ## Fix Missing File Ownership
