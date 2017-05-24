@@ -20,7 +20,7 @@ if [ ! -e $BACKUP ]; then
 fi
 
 if [ ! -f "$BACKUP/password-auth.orig" ]; then
-	cp /etc/pam.d/password-auth $BACKUP/pasword-auth.orig
+	cp /etc/pam.d/password-auth $BACKUP/password-auth.orig
 fi
 
 cp -f $CONFIG/password-auth-local /etc/pam.d/password-auth-local
