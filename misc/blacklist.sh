@@ -13,7 +13,7 @@ chmod 0644 /etc/modprobe.d/usgcb-blacklist.conf
 chcon 'system_u:object_r:modules_conf_t:s0' /etc/modprobe.d/usgcb-blacklist.conf
 
 # DISA GEN007660 - Disable Bluetooth
-echo -e "install bluetooth /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf 
+echo -e "install bluetooth /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf 
 # DISA GEN007260 - Disable AppleTalk
 echo -e "install appletalk /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf 
 # NSA Recommendation: Disable mounting USB Mass Storage
@@ -41,6 +41,6 @@ echo -e "install rds /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 # CCE-14911-2 (row 133) / DISA GEN007540
 echo -e "install tipc /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 # CCE-14948-4 (row 176)
-echo -e "install net-pf-31 /bin/false" >> /etc/modprobe.d/usgcb-blacklist.conf
+echo -e "install net-pf-31 /bin/true" >> /etc/modprobe.d/usgcb-blacklist.conf
 # DISA GEN007700
 echo -e "options ipv6 disable=1" >> /etc/modprobe.d/usgcb-blacklist.conf
